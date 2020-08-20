@@ -20,9 +20,11 @@
     <p>Status: <input v-model="newProductStatus" type="text"></p>
     
     <button v-on:click="addProduct()">Add Product</button>
+  
+  
 
     <h2>---------------------------------------------------------------------------------------------</h2>
-<h2>
+  <h2>
     <button v-on:click="changeDesign()">Customize Your Shopping List's Display!</button>
     </h2>
 
@@ -40,22 +42,22 @@
     
 
     <h2>---------------------------------------------------------------------------------------------</h2>
+    
    
     <h2>{{ message }}</h2>
 
     
 
     <div v-for="product in products">
-      <h2><button>Complete</button>Store Name: {{ product.store_name }}</h2>
-      <h2><button>Complete</button>Product Name: {{ product.product_name }}</h2> 
-      <h2><button>Complete</button>Quantity: {{ product.quantity }}</h2>
+      <h2><button>Complete</button> Store Name: {{ product.store_name }}</h2>
+      <h2><button>Complete</button> Product Name: {{ product.product_name }}</h2> 
+      <h2><button>Complete</button> Quantity: {{ product.quantity }}</h2>
       <h2>Price: {{ product.price }}</h2>
       <h2>Deadline: {{ product.deadline }}</h2>
       <h2>Store Notes: {{ product.store_notes_timestamp }}</h2>
       <h2>Status: {{ product.status }}</h2>
        <h1>
         <button v-on:click="showInfo(product)">EDIT</button>
-      <hr>
       </h1>
         
       <h2>---------------------------------------------------------------------------------------------</h2>
@@ -65,16 +67,21 @@
     <dialog id="product-details">
       <form method="dialog">
         <h1>Product info</h1>
-        <p>store_name: {{currentProduct.store_name}}</p>
-        <p>product_name: <input v-model="currentProduct.product_name"></p>
-        <p>quantity: <input v-model="currentProduct.quantity"></p>
-        <p>price: <input  v-model="currentProduct.price"></p>
-        <p>deadline: <input  v-model="currentProduct.deadline"></p>
-        <p>store_notes: <input  v-model="currentProduct.store_notes"></p>
-        <p>status: <input  v-model="currentProduct.status"></p>
+        <p>Store Name: <input type="text" v-model="currentProduct.store_name" /></p>
+        <p>Product Name: <input type="text" v-model="currentProduct.product_name" /></p>
+        <p>Quantity: <input type="text" v-model="currentProduct.quantity" /></p>
+        <p>Price: <input type="text" v-model="currentProduct.price" /></p>
+        <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
+        <p>Store Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
+        <p>Status: <input type="text" v-model="currentProduct.status" /></p>
+        
         <button v-on:click="updateProduct(currentProduct)">Update</button>
+
+        <button v-on:click="destroyProduct(currentProduct)">Delete Product</button>
+
         <button>Close</button>
-        <button v-on:click="destroyProduct(currentProduct)">Delete product</button>
+
+
       </form>
     </dialog>
 
@@ -157,18 +164,18 @@ export default {
       console.log(product);
 
       var params = {
-        store_name: this.newProductStoreName,
-        product_name: this.newProductName,
-        quantity: this.newProductQuantity,
-        price: this.newProductPrice,
-        deadline: this.newProductDeadline,
-        store_notes: this.newProductStoreNotes,
-        status: this.newProductStatus,
+        store_name: product.store_name,
+        product_name: product.product_name,
+        quantity: product.quantity,
+        price: product.price,
+        deadline: product.deadline,
+        store_notes: product.store_notes,
+        status: product.status,
       };
 
       axios.patch("/api/products/" + product.id, params).then((response) => {
         console.log(response.data);
-        this.currentProduct = response.data;
+        this.currentProduct = {};
       });
     },
     destroyProduct: function (product) {
