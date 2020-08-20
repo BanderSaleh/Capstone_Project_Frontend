@@ -104,7 +104,9 @@
         <p>Price: <input type="text" v-model="currentProduct.price" /></p>
         <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
         <p>Store Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
-        <p>Status: Carted</p>
+        <p>Status: "Carted"</p>
+
+        <button v-on:click="completeProduct(currentProduct)">Completed</button>
         
         <button v-on:click="updateProduct(currentProduct)">Update</button>
 
@@ -124,7 +126,7 @@
       <h2>Price: {{ product.price }}</h2>
       <h2>Deadline: {{ product.deadline }}</h2>
       <h2>Store Notes: {{ product.store_notes }}</h2>
-      <h2>Status: Carted</h2>
+      <h2>Status: "Carted"</h2>
        <h1>
         <button v-on:click="showInfo(product)">EDIT</button>
       </h1>
@@ -220,7 +222,7 @@ export default {
         price: product.price,
         deadline: product.deadline,
         store_notes: product.store_notes,
-        status: Carted,
+        status: "Carted",
       };
 
       axios.patch("/api/products/" + product.id, params).then((response) => {
