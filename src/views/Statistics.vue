@@ -10,24 +10,50 @@
     <h1>My Statistics!</h1>
     
     <h2>{{ message }}</h2>
-   
-    
 
     
     <div v-for="complete in completed">
-      <h2>UserID: {{ complete.UserID }}</h2>
-      <h2><button>EDIT</button><button>Delete</button>Store Name: {{ complete.store_name }}</h2>
-      <h2><button>Complete</button><button>EDIT</button><button>Delete</button>Product Name: {{ complete.product_name }}</h2> 
-      <h2><button>Complete</button><button>EDIT</button>Quantity: {{ complete.quantity }}</h2>
-      <h2>Store Notes: {{ complete.store_notes }}</h2>
-      <h2>Timestamp: {{ complete.timestamp }}</h2>
-      <h2>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</h2>
-      <h2>Price: {{ complete.price }}</h2>
-      <h2>Deadline: {{ complete.deadline }}</h2>
-      <h2>Status: {{ complete.status }}</h2>
+      <p>Store Name: {{ complete.store_name }}</p>
+      <p>Product Name: {{ complete.product_name }}</p> 
+      <p>Quantity: {{ complete.quantity }}</p>
+      <p>Price: {{ complete.price }}</p>
+      <p>Deadline: {{ complete.deadline }}</p>
+      <p>Store Notes: {{ complete.store_notes }}</p>
+      <p>Timestamp: {{ complete.timestamp }}</p>
+      <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+      <p>Status: Completed</p>
+
+      <h1>
+        <button v-on:click="showInfo(complete)">EDIT</button>
+      </h1>
+
+
       <h2> ---------------------------------------------------------------------------------------------</h2>
      
     </div>
+
+    <dialog id="completed-details">
+      <form method="dialog">
+        <h1>Product info</h1>
+        <p>Store Name: <input type="text" v-model="currentComplete.store_name" /></p>
+        <p>Product Name: <input type="text" v-model="currentComplete.product_name" /></p>
+        <p>Quantity: <input type="text" v-model="currentComplete.quantity" /></p>
+        <p>Price: <input type="text" v-model="currentComplete.price" /></p>
+        <p>Deadline: <input type="text" v-model="currentComplete.deadline" /></p>
+        <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
+        <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
+        <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
+        <p>Status: Completed</p>
+        
+        <button v-on:click="updateProduct(currentProduct)">Update</button>
+
+        <button v-on:click="destroyProduct(currentProduct)">Delete Product</button>
+
+        <button>Close</button>
+
+
+      </form>
+    </dialog>
 
 
     <h2>(Customizable Smart Graph Goes Here!)</h2>
@@ -47,6 +73,7 @@
 
 
 
+
 <script>
 import axios from "axios";
 
@@ -55,6 +82,16 @@ export default {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
+      newCompletedStoreName: "",
+      newCompletedProductName: "",
+      newCompletedQuantity: "",
+      newCompletedPrice: "",
+      newCompletedDeadline: "",
+      newCompletedStoreNotes: "",
+      newCompletedTimestamp: "",
+      newCompletedStoreNotesTimestamp: "",
+      newCompletedStatus: "",
+      currentComplete: {},
     };
   },
   created: function () {
@@ -68,6 +105,11 @@ export default {
         console.log(response);
         this.completed = response.data;
       });
+    },
+    showInfo: function (complete) {
+      console.log(complete);
+      this.currentComplete = complete;
+      document.querySelector("#completed-details").showModal();
     },
     // addCompleted: function () {
     //   console.log("adding product...");

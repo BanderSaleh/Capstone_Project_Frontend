@@ -10,9 +10,9 @@
 
     <h3>App Features:</h3>
 
-    <h4>-Customizable Shopping Lists to help save paper:</h4>
+    <h4>-Customizable Shopping Lists to save paper!</h4>
 
-    <h4>-Statistics Page: Containing Smart Graphs that show how well you have been grocery shopping!</h4>
+    <h4>-Statistics Page containing Smart Graphs that show how well you have been grocery shopping!</h4>
 
     <h4> List Style #1:</h4>
 
