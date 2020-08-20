@@ -2,35 +2,28 @@
   <div class="about">
     <h1>About Page</h1>
 
-    <h2>About App:</h2>
-    <h3>The "Shopping List App, save paper!" is here to help the environment!</h3>
+    <!-- <h2>About App:</h2> -->
+    <h2>The "Shopping List App, save paper!" is here to help the environment!</h2>
+
+    <h3>App Features:</h3>
+
+    <h3>-Customizable Shopping Lists to save paper!</h3>
+
+    <h3>-Shopping Lists made with Smart Tables for fluidity.</h3>
+
+    <h3>-Statistics Page containing Smart Graphs that display how well you have been grocery shopping!</h3>
+
+    <h3>-Statistics Page also contain a Smart Map that display visited stores, notes about specific/nonspecific store name locations, and other User's opinions on specific store locations.</h3>
+
+    <h3>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h3>
+
+
     <h3>Backend: [RubyRails]</h3>
     <h3>Frontend: [HTML/CSS] [JavaScript] [Vuejs]
     </h3>
     
-
-    <h2>Developer:</h2>
-    <h3>
-      	Newsy: Personally built an app that allows the user to personalize a Shopping List App that Saves Paper if used instead of hand writing your grocery shopping list. Built on a Ruby-on-Rails backend and a Vue.js frontend, incorporating and modifying Bootstrap elements and JavaScript transition elements.
-    </h3>
-    <h3>
-      	Bootcamp: Learned fundamentals and best practices in full-stack web development in areas of project architecture, backend, frontend, and how to effectively self-teach new technologies.
-    </h3>
-    <h4>
-      o	Generated technical requirements and determined the most effective solutions, created wireframes, designed schema, and researched outside resources
-    </h4>
-    <h4>
-    o	Built and tested the backend, incorporating external APIs
-    </h4>
-    <h4>
-      o	Created pages and RESTful routes, made web requests to retrieve data, formatted and styled results, incorporated libraries and themes
-    </h4>
-
     
-    <h2>App Features:</h2>
-
-    <h3>-Customizable Shopping Lists to save paper!</h3>
-    <h3>-Smart Graphs to see how well you are grocery shopping!</h3>
+    
 
    
 

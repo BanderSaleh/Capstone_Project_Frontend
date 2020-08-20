@@ -12,7 +12,13 @@
 
     <h4>-Customizable Shopping Lists to save paper!</h4>
 
-    <h4>-Statistics Page containing Smart Graphs that show how well you have been grocery shopping!</h4>
+    <h4>-Shopping Lists made with Smart Tables for fluidity.</h4>
+
+    <h4>-Statistics Page containing Smart Graphs that display how well you have been grocery shopping!</h4>
+
+    <h4>-Statistics Page also contain a Smart Map that display visited stores, notes about specific/nonspecific store name locations, and other User's opinions on specific store locations.</h4>
+
+    <h4>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h4>
 
     <h4> List Style #1:</h4>
 
