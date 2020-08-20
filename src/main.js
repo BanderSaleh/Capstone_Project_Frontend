@@ -4,6 +4,9 @@ import router from "./router";
 import axios from "axios";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SortedTablePlugin from "vue-sorted-table";
+
+Vue.use(SortedTablePlugin);
 
 
 
