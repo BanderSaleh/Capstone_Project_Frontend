@@ -1,5 +1,6 @@
 <template>
 
+
   <div class="home">
 
     
@@ -54,7 +55,7 @@
       <h2><button>Complete</button> Quantity: {{ product.quantity }}</h2>
       <h2>Price: {{ product.price }}</h2>
       <h2>Deadline: {{ product.deadline }}</h2>
-      <h2>Store Notes: {{ product.store_notes_timestamp }}</h2>
+      <h2>Store Notes: {{ product.store_notes }}</h2>
       <h2>Status: {{ product.status }}</h2>
        <h1>
         <button v-on:click="showInfo(product)">EDIT</button>
