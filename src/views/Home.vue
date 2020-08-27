@@ -57,75 +57,64 @@
 
     <h2>{{ message }}</h2>
 
+    
     <div id="app">
-    <SortedTable :values="products">
-      <thead>
-        <tr>
-          <th scope="col" style="button: left; width: 10rem;">
-            <SortLink name="button">Complete/Edit/Delete</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="id">ID</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="store_name">Store Name</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="product_name">Product Name</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="quantity">Quantity</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="price">Price</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="deadline">Deadline</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="status">Status</SortLink>
-          </th>
-          <th scope="col" style="text-align: left; width: 10rem;">
-            <SortLink name="image">Image</SortLink>
-          </th>
-        </tr>
-      </thead>
-      <tbody slot="body" slot-scope="sort">
-        <tr v-for="value in sort.values" :key="value.id">
-          <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE</button></td>
-          <td>{{ value.id }}</td>
-          <td>{{ value.store_name }}</td>
-          <td>{{ value.product_name }}</td>
-          <td>{{ value.quantity }}</td>
-          <td>{{ value.price }}</td>
-          <td>{{ value.deadline }}</td>
-          <td>{{ value.status = "Carted" }}</td>
-          <td>{{ value.image }}</td>
-        </tr>
-      </tbody>
-    </SortedTable>
-  </div>
+      <SortedTable :values="products">
+        <thead>
+          <tr>
+            <th scope="col" style="button: left; width: 10rem;">
+              <SortLink name="button">Complete/Edit/Delete</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="id">ID</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="store_name">Store Name</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="product_name">Product Name</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="quantity">Quantity</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="price">Price</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="deadline">Deadline</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="status">Status</SortLink>
+            </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="image">Image</SortLink>
+            </th>
+          </tr>
+        </thead>
+        <tbody slot="body" slot-scope="sort">
+          <tr v-for="product in sort.values" :key="product.id">
+            <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE</button></td>
+            <td>{{ product.id }}</td>
+            <td>{{ product.store_name }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.deadline }}</td>
+            <td>{{ product.status = "Carted" }}</td>
+            <td>{{ product.image }}</td>
+          </tr>
+        </tbody>
+      </SortedTable>
+    </div>
+    
+
+
 
   
 
-     <div v-for="product in products">
-      <h2>id: {{ product.id }}</h2>
-      <h2>Store Name: {{ product.store_name }}</h2>
-      <h2>Product Name: {{ product.product_name }}</h2> 
-      <h2>Quantity: {{ product.quantity }}</h2>
-      <h2>Price: {{ product.price }}</h2>
-      <h2>Deadline: {{ product.deadline }}</h2>
-      <h2>Store Notes: {{ product.store_notes }}</h2>
-      <h2>Status: "Carted"</h2>
-      <h2>Image: {{ product.image }}</h2>
-       <h1>
-        <button v-on:click="showInfo(product)">EDIT</button>
-      </h1>
-        
-      <h2>---------------------------------------------------------------------------------------------</h2>
      
-    </div>
-
+        
+     
 
     
 
