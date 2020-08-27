@@ -6,7 +6,7 @@
     
     <h1>Shopping List App, save paper!</h1>
 
-    <h2>Create New Shopping List Item:</h2>
+    <h4>Create New Shopping List Item:</h4>
     <div>
       <p>Store Name: <input v-model="newProductStoreName" type="text"></p>
       <p>Product Name: <input v-model="newProductName" type="text"></p>
@@ -132,7 +132,7 @@
         <p>Status: "Carted"</p>
         <p>Image: <input type="text" v-model="currentProduct.image" /></p>
 
-        <button v-on:click="completeProduct(currentProduct)">Completed</button>
+        <button v-on:click="completedProduct(currentProduct)">Completed</button>
         
         <button v-on:click="updateProduct(currentProduct)">Update</button>
 
@@ -261,6 +261,17 @@ export default {
     destroyProduct: function (product) {
       console.log(product);
       // delete it in the backend (rails)
+      axios.delete("/api/products/" + product.id).then((response) => {
+        console.log(response.data);
+        // delete in frontend
+        var index = this.products.indexOf(product);
+        this.products.splice(index, 1);
+
+        console.log(index);
+      });
+    },
+    completedProduct: function (product) {
+      console.log(product);
       axios.delete("/api/products/" + product.id).then((response) => {
         console.log(response.data);
         // delete in frontend
