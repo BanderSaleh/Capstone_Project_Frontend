@@ -101,11 +101,13 @@
             <td>{{ product.price }}</td>
             <td>{{ product.deadline }}</td>
             <td>{{ product.status = "Carted" }}</td>
-            <td>{{ product.image }}</td>
+            <td>{{ product.image}}</td>
           </tr>
         </tbody>
       </SortedTable>
     </div>
+
+    
     
 
 
@@ -185,6 +187,8 @@ export default {
       newProductStatus: "",
       newProductImage: "",
       currentProduct: {},
+      image1: require("@/assets/images/shopping_list_1.jpg"),
+      image2: require("@/assets/images/shopping_list_2.jpeg"),
     };
   },
   created: function () {
@@ -222,6 +226,7 @@ export default {
         price: this.newProductPrice,
         deadline: this.newProductDeadline,
         store_notes: this.newProductStoreNotes,
+        image: this.newProductImage,
       };
 
       axios.post("/api/products", params).then((response) => {
@@ -244,6 +249,7 @@ export default {
         price: product.price,
         deadline: product.deadline,
         store_notes: product.store_notes,
+        image: product.image,
         status: "Carted",
       };
 
