@@ -13,7 +13,7 @@
       <p>Quantity: <input v-model="newProductQuantity" type="text"></p>
       <p>Price: <input v-model="newProductPrice" type="text"></p>
       <p>Deadline: <input v-model="newProductDeadline" type="text"></p>
-      <p>Store Notes: <input v-model="newProductStoreNotes" type="text"></p>
+      <p>Notes: <input v-model="newProductStoreNotes" type="text"></p>
       <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
       
 
@@ -50,6 +50,8 @@
 
     <h4> List Style #3:</h4>
     <h4> [Figure out styles list]</h4> -->
+
+    <!-- <img :src="BG1" width="900" alt="Casual Jacket"> -->
 
     
 
@@ -89,6 +91,9 @@
             <th scope="col" style="text-align: left; width: 10rem;">
               <SortLink name="picture">Picture</SortLink>
             </th>
+            <th scope="col" style="text-align: left; width: 10rem;">
+              <SortLink name="store_notes">Notes</SortLink>
+            </th>
           </tr>
         </thead>
         <tbody slot="body" slot-scope="sort">
@@ -102,6 +107,7 @@
             <td>{{ product.deadline }}</td>
             <td>{{ product.status = "Carted" }}</td>
             <td>{{ product.picture}}</td>
+            <td>{{ product.store_notes}}</td>
           </tr>
         </tbody>
       </SortedTable>
@@ -128,7 +134,7 @@
         <p>Quantity: <input type="text" v-model="currentProduct.quantity" /></p>
         <p>Price: <input type="text" v-model="currentProduct.price" /></p>
         <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
-        <p>Store Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
+        <p>Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
         <p>Status: "Carted"</p>
         <p>Picture (URL): <input type="text" v-model="currentProduct.picture" /></p>
 
@@ -201,6 +207,7 @@ export default {
       currentComplete: {},
       image1: require("@/assets/images/shopping_list_1.jpg"),
       image2: require("@/assets/images/shopping_list_2.jpeg"),
+      BG1: require("@/assets/images/Wallpaper1.png"),
     };
   },
   created: function () {
