@@ -21,6 +21,8 @@
     </div>
     <router-view/>
 
+    
+
     <router-link to="/about">[about]</router-link> |
     <router-link to="/contact">[contact]</router-link> |
     <router-link to="/faq">[faq]</router-link> |

@@ -14,7 +14,7 @@
       <p>Price: <input v-model="newProductPrice" type="text"></p>
       <p>Deadline: <input v-model="newProductDeadline" type="text"></p>
       <p>Store Notes: <input v-model="newProductStoreNotes" type="text"></p>
-      <p>Image: <input v-model="newProductImage" type="text"></p>
+      <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
       
 
   
@@ -63,7 +63,7 @@
         <thead>
           <tr>
             <th scope="col" style="button: left; width: 10rem;">
-              <SortLink name="button">Complete/Edit/Delete</SortLink>
+              <SortLink name="button">Complete/Edit/Delete/Close</SortLink>
             </th>
             <th scope="col" style="text-align: left; width: 10rem;">
               <SortLink name="id">ID</SortLink>
@@ -87,13 +87,13 @@
               <SortLink name="status">Status</SortLink>
             </th>
             <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="image">Image</SortLink>
+              <SortLink name="picture">Picture</SortLink>
             </th>
           </tr>
         </thead>
         <tbody slot="body" slot-scope="sort">
           <tr v-for="product in sort.values" :key="product.id">
-            <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE</button></td>
+            <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE/CLOSE</button></td>
             <td>{{ product.id }}</td>
             <td>{{ product.store_name }}</td>
             <td>{{ product.product_name }}</td>
@@ -101,7 +101,7 @@
             <td>{{ product.price }}</td>
             <td>{{ product.deadline }}</td>
             <td>{{ product.status = "Carted" }}</td>
-            <td>{{ product.image}}</td>
+            <td>{{ product.picture}}</td>
           </tr>
         </tbody>
       </SortedTable>
@@ -130,9 +130,10 @@
         <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
         <p>Store Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
         <p>Status: "Carted"</p>
-        <p>Image: <input type="text" v-model="currentProduct.image" /></p>
+        <p>Picture (URL): <input type="text" v-model="currentProduct.picture" /></p>
 
-        <button v-on:click="completedProduct(currentProduct)">Completed</button>
+        <button v-on:click="completedProduct()">Complete Product</button>
+
         
         <button v-on:click="updateProduct(currentProduct)">Update</button>
 
@@ -185,8 +186,19 @@ export default {
       newProductDeadline: "",
       newProductStoreNotes: "",
       newProductStatus: "",
-      newProductImage: "",
+      newProductPicture: "",
       currentProduct: {},
+      completed: [],
+      newCompletedStoreName: "",
+      newCompletedProductName: "",
+      newCompletedQuantity: "",
+      newCompletedPrice: "",
+      newCompletedDeadline: "",
+      newCompletedStoreNotes: "",
+      newCompletedTimestamp: "",
+      newCompletedStoreNotesTimestamp: "",
+      newCompletedStatus: "",
+      currentComplete: {},
       image1: require("@/assets/images/shopping_list_1.jpg"),
       image2: require("@/assets/images/shopping_list_2.jpeg"),
     };
@@ -200,7 +212,7 @@ export default {
     },
     onUpload() {
       const fd = new FormData();
-      fd.append("image", this.selectedFile, this.selectedFile.name);
+      fd.append("picture", this.selectedFile, this.selectedFile.name);
       axios.post("/api/products", params).then((response) => {
         console.log(response.data);
         this.products.push(response);
@@ -216,7 +228,7 @@ export default {
     },
 
     addProduct: function () {
-      console.log("adding recipe...");
+      console.log("adding product...");
       console.log(this.newProductName);
 
       var params = {
@@ -226,7 +238,7 @@ export default {
         price: this.newProductPrice,
         deadline: this.newProductDeadline,
         store_notes: this.newProductStoreNotes,
-        image: this.newProductImage,
+        picture: this.newProductPicture,
       };
 
       axios.post("/api/products", params).then((response) => {
@@ -249,7 +261,7 @@ export default {
         price: product.price,
         deadline: product.deadline,
         store_notes: product.store_notes,
-        image: product.image,
+        picture: product.picture,
         status: "Carted",
       };
 
@@ -272,6 +284,22 @@ export default {
     },
     completedProduct: function (product) {
       console.log(product);
+      var params = {
+        store_name: completed.store_name,
+        product_name: completed.product_name,
+        quantity: completed.quantity,
+        price: completed.price,
+        deadline: completed.deadline,
+        store_notes: completed.store_notes,
+        picture: completed.picture,
+        status: "Completed",
+      };
+
+      axios.patch("/api/completed/" + completed.id, params).then((response) => {
+        console.log(response.data);
+        this.currentCompleted = {};
+      });
+      //
       axios.delete("/api/products/" + product.id).then((response) => {
         console.log(response.data);
         // delete in frontend
