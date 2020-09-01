@@ -21,14 +21,14 @@
               <a class="nav-link" href="/">Welcome</a>
             </li>
             <li class="nav-item"v-if="isLoggedIn()">
-              <a class="nav-link" href="/statistics.html">Statistics</a>
+              <a class="nav-link" href="/statistics">Statistics</a>
             </li>
             <li class="nav-item"v-if="isLoggedIn()">
-              <a class="nav-link" href="account.html">Account</a>
+              <a class="nav-link" href="/account">Account</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="contact.html">Extra image</a>
-            </li>
+            </li> -->
             <li class="nav-item"v-if="isLoggedIn()">
               <a class="nav-link" href="/logout">Logout</a>
             </li>
@@ -58,7 +58,7 @@
             <div class="site-heading">
               <h1>Shopping List App,</h1>
               <span class="subheading">Save Paper!</span>
-              <span class="subheading">[ To save your Shopping List(s), please Login or Signup! ]</span>
+              
 
               
 
@@ -132,7 +132,7 @@
 
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -151,7 +151,7 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
 
 
