@@ -3,6 +3,8 @@
 
 
   <div id="app">
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand"v-if="!isLoggedIn()"</a>
@@ -19,7 +21,7 @@
               <a class="nav-link" href="/">Welcome</a>
             </li>
             <li class="nav-item"v-if="isLoggedIn()">
-              <a class="nav-link" href="statistics.html">Statistics</a>
+              <a class="nav-link" href="/statistics.html">Statistics</a>
             </li>
             <li class="nav-item"v-if="isLoggedIn()">
               <a class="nav-link" href="account.html">Account</a>
@@ -76,6 +78,50 @@
     
 
     <router-view/>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <router-link to="/about">[about]</router-link> |
+            <router-link to="/contact">[contact]</router-link> |
+            <router-link to="/faq">[faq]</router-link> |
+            <router-link to="/terms">[terms]</router-link> |
+            <router-link to="/privacy">[privacy]</router-link>
+            <p class="copyright text-muted"></p>
+              <p></p>
+              <p>A Bander Saleh production</p>
+              <p>© 2020, Bander Saleh. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
     
   </div>
 
