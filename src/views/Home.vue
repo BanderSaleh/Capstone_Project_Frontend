@@ -4,9 +4,24 @@
   <div class="Home">
 
     
-    <h1>Shopping List App, save paper!</h1>
 
-    <h4>Create New Shopping List Item:</h4>
+     <!-- Page Header -->
+  <!-- <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Shopping List App, save paper!</h1>
+            <span class="subheading">An App by Bander Saleh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> -->
+
+
+    <h1>Create New Shopping List Item:</h1>
     <div>
       <p>Store Name: <input v-model="newProductStoreName" type="text"></p>
       <p>Product Name: <input v-model="newProductName" type="text"></p>
@@ -16,13 +31,6 @@
       <p>Notes: <input v-model="newProductStoreNotes" type="text"></p>
       <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
       
-
-  
-
-      <h1> </h1>
-
-      <!-- <p>Status: <input v-model="newProductStatus" type="text"></p> -->
-    
       <button v-on:click="addProduct()">Add Product</button>
 
       
@@ -31,14 +39,16 @@
     
 
 
+   <h1> </h1>
    
+
   
   
 
-    <h2>---------------------------------------------------------------------------------------------</h2>
+    <!-- <h2>---------------------------------------------------------------------------------------------</h2>
     <h2>
     <button v-on:click="changeDesign()">Customize Your Shopping List's Display!</button>
-    </h2>
+    </h2> -->
 
     <!-- <h4> List Style #1:</h4>
 
@@ -55,7 +65,7 @@
 
     
 
-    <h2>---------------------------------------------------------------------------------------------</h2>
+    <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
 
     <h2>{{ message }}</h2>
 
@@ -65,7 +75,11 @@
         <thead>
           <tr>
             <th scope="col" style="button: left; width: 10rem;">
-              <SortLink name="button">Complete/Edit/Delete/Close</SortLink>
+              <SortLink name="button">Complete/Edit</SortLink>
+
+              
+
+
             </th>
             <th scope="col" style="text-align: left; width: 10rem;">
               <SortLink name="id">ID</SortLink>
@@ -99,6 +113,7 @@
         <tbody slot="body" slot-scope="sort">
           <tr v-for="product in sort.values" :key="product.id">
             <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE/CLOSE</button></td>
+            
             <td>{{ product.id }}</td>
             <td>{{ product.store_name }}</td>
             <td>{{ product.product_name }}</td>
