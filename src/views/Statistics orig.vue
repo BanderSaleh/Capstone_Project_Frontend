@@ -3,7 +3,7 @@
 
 
 
-  <div class="statistics">
+  <div class="Statistics">
     
     
     

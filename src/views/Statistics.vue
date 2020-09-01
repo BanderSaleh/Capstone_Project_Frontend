@@ -1,160 +1,49 @@
 <template>
 
-  
+
+
+
   <div class="Statistics">
-
     
-
-     <!-- Page Header -->
-  <!-- <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Shopping List App, save paper!</h1>
-            <span class="subheading">An App by Bander Saleh</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header> -->
-
-
-    <h1>Create New Shopping List Item:</h1>
-    <div>
-      <p>Store Name: <input v-model="newProductStoreName" type="text"></p>
-      <p>Product Name: <input v-model="newProductName" type="text"></p>
-      <p>Quantity: <input v-model="newProductQuantity" type="text"></p>
-      <p>Price: <input v-model="newProductPrice" type="text"></p>
-      <p>Deadline: <input v-model="newProductDeadline" type="text"></p>
-      <p>Notes: <input v-model="newProductStoreNotes" type="text"></p>
-      <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
-      
-      <button v-on:click="addProduct()">Add Product</button>
-
-      
-    </div>
-
     
-
-
-   <h1> </h1>
-   
-
-  
-  
-
-    <!-- <h2>---------------------------------------------------------------------------------------------</h2>
-    <h2>
-    <button v-on:click="changeDesign()">Customize Your Shopping List's Display!</button>
-    </h2> -->
-
-    <!-- <h4> List Style #1:</h4>
-
-    <img :src="image1" width="900" alt="Casual Jacket"> -->
-
-    <!-- <h4> List Style #2:</h4>
-
-    <img :src="image2" width="900" alt="Casual Jacket">
-
-    <h4> List Style #3:</h4>
-    <h4> [Figure out styles list]</h4> -->
-
-    <!-- <img :src="BG1" width="900" alt="Casual Jacket"> -->
-
     
-
-    <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
-
+    <h1>My Statistics!</h1>
+    
     <h2>{{ message }}</h2>
 
     
-    <div id="app">
-      <SortedTable :values="products">
-        <thead>
-          <tr>
-            <th scope="col" style="button: left; width: 10rem;">
-              <SortLink name="button">Complete/Edit</SortLink>
+    <div v-for="complete in completed">
+      <p>Store Name: {{ complete.store_name }}</p>
+      <p>Product Name: {{ complete.product_name }}</p> 
+      <p>Quantity: {{ complete.quantity }}</p>
+      <p>Price: {{ complete.price }}</p>
+      <p>Deadline: {{ complete.deadline }}</p>
+      <p>Store Notes: {{ complete.store_notes }}</p>
+      <p>Timestamp: {{ complete.timestamp }}</p>
+      <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+      <p>Status: Completed</p>
 
-              
+      <h1>
+        <button v-on:click="showInfo(complete)">EDIT</button>
+      </h1>
 
 
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="id">ID</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="store_name">Store Name</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="product_name">Product Name</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="quantity">Quantity</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="price">Price</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="deadline">Deadline</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="status">Status</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="picture">Picture</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="store_notes">Notes</SortLink>
-            </th>
-          </tr>
-        </thead>
-        <tbody slot="body" slot-scope="sort">
-          <tr v-for="product in sort.values" :key="product.id">
-            <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE/CLOSE</button></td>
-            
-            <td>{{ product.id }}</td>
-            <td>{{ product.store_name }}</td>
-            <td>{{ product.product_name }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.deadline }}</td>
-            <td>{{ product.status = "Carted" }}</td>
-            <td>{{ product.picture}}</td>
-            <td>{{ product.store_notes}}</td>
-          </tr>
-        </tbody>
-      </SortedTable>
+      <h2> ---------------------------------------------------------------------------------------------</h2>
+     
     </div>
 
-    
-    
-
-
-
-  
-
-     
-        
-     
-
-    
-
-    <dialog id="product-details">
+    <dialog id="completed-details">
       <form method="dialog">
         <h1>Product info</h1>
-        <p>Store Name: <input type="text" v-model="currentProduct.store_name" /></p>
-        <p>Product Name: <input type="text" v-model="currentProduct.product_name" /></p>
-        <p>Quantity: <input type="text" v-model="currentProduct.quantity" /></p>
-        <p>Price: <input type="text" v-model="currentProduct.price" /></p>
-        <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
-        <p>Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
-        <p>Status: "Carted"</p>
-        <p>Picture (URL): <input type="text" v-model="currentProduct.picture" /></p>
-
-        <button v-on:click="completedProduct()">Complete Product</button>
-
+        <p>Store Name: <input type="text" v-model="currentComplete.store_name" /></p>
+        <p>Product Name: <input type="text" v-model="currentComplete.product_name" /></p>
+        <p>Quantity: <input type="text" v-model="currentComplete.quantity" /></p>
+        <p>Price: <input type="text" v-model="currentComplete.price" /></p>
+        <p>Deadline: <input type="text" v-model="currentComplete.deadline" /></p>
+        <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
+        <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
+        <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
+        <p>Status: Completed</p>
         
         <button v-on:click="updateProduct(currentProduct)">Update</button>
 
@@ -162,11 +51,57 @@
 
         <button>Close</button>
 
+
       </form>
     </dialog>
 
-   
 
+    <h2>(Customizable Smart Graph Goes Here!)</h2>
+
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <router-link to="/about">[about]</router-link> |
+            <router-link to="/contact">[contact]</router-link> |
+            <router-link to="/faq">[faq]</router-link> |
+            <router-link to="/terms">[terms]</router-link> |
+            <router-link to="/privacy">[privacy]</router-link>
+            <p class="copyright text-muted"></p>
+              <p></p>
+              <p>A Bander Saleh production</p>
+              <p>© 2020, Bander Saleh. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   </div>
 
@@ -180,35 +115,16 @@
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
 
-<script>
-  new Vue({
-    ...
-    mixins: [Vue2Filters.mixin],
-    ...
-  })
-</script>
 
 
 
 <script>
 import axios from "axios";
-// import FileUpload from "./components/FileUpload.vue";
 
 export default {
-  name: "Home",
   data: function () {
     return {
-      message: "My Shopping List:",
-      products: [],
-      newProductStoreName: "",
-      newProductName: "",
-      newProductQuantity: "",
-      newProductPrice: "",
-      newProductDeadline: "",
-      newProductStoreNotes: "",
-      newProductStatus: "",
-      newProductPicture: "",
-      currentProduct: {},
+      message: "My Completed Shopping List History:",
       completed: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
@@ -220,124 +136,45 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
-      image1: require("@/assets/images/shopping_list_1.jpg"),
-      image2: require("@/assets/images/shopping_list_2.jpeg"),
-      BG1: require("@/assets/images/Wallpaper1.png"),
     };
   },
   created: function () {
-    this.indexProducts();
+    this.indexCompleted();
   },
   methods: {
-    onFileSelected(event) {
-      this.selectedFile = event.newProductNametarget.files[0];
-    },
-    onUpload() {
-      const fd = new FormData();
-      fd.append("picture", this.selectedFile, this.selectedFile.name);
-      axios.post("/api/products", params).then((response) => {
-        console.log(response.data);
-        this.products.push(response);
-      });
-    },
-    indexProducts: function () {
-      console.log("products index...");
+    indexCompleted: function () {
+      console.log("completed index...");
 
-      axios.get("/api/products").then((response) => {
+      axios.get("/api/completed").then((response) => {
         console.log(response);
-        this.products = response.data;
+        this.completed = response.data;
       });
     },
-
-    addProduct: function () {
-      console.log("adding product...");
-      console.log(this.newProductName);
-
-      var params = {
-        store_name: this.newProductStoreName,
-        product_name: this.newProductName,
-        quantity: this.newProductQuantity,
-        price: this.newProductPrice,
-        deadline: this.newProductDeadline,
-        store_notes: this.newProductStoreNotes,
-        picture: this.newProductPicture,
-      };
-
-      axios.post("/api/products", params).then((response) => {
-        console.log(response.data);
-        this.products.push(response.data);
-      });
+    showInfo: function (complete) {
+      console.log(complete);
+      this.currentComplete = complete;
+      document.querySelector("#completed-details").showModal();
     },
-    showInfo: function (product) {
-      console.log(product);
-      this.currentProduct = product;
-      document.querySelector("#product-details").showModal();
-    },
-    updateProduct: function (product) {
-      console.log(product);
+    // addCompleted: function () {
+    //   console.log("adding product...");
+    //   console.log(this.newProductName);
 
-      var params = {
-        store_name: product.store_name,
-        product_name: product.product_name,
-        quantity: product.quantity,
-        price: product.price,
-        deadline: product.deadline,
-        store_notes: product.store_notes,
-        picture: product.picture,
-        status: "Carted",
-      };
+    //   var params = {
+    //     store_name: this.newStoreName,
+    //     product_name: this.newProductName,
+    //     quantity: this.quantity,
+    //     price: this.price,
+    //     deadline: this.deadline,
+    //     newStoreNotesTimestamp: this.newStoreNotesTimestamp,
+    //     status: this.status,
+    //   };
 
-      axios.patch("/api/products/" + product.id, params).then((response) => {
-        console.log(response.data);
-        this.currentProduct = {};
-      });
-    },
-    destroyProduct: function (product) {
-      console.log(product);
-      // delete it in the backend (rails)
-      axios.delete("/api/products/" + product.id).then((response) => {
-        console.log(response.data);
-        // delete in frontend
-        var index = this.products.indexOf(product);
-        this.products.splice(index, 1);
-
-        console.log(index);
-      });
-    },
-    completedProduct: function (product) {
-      console.log(product);
-      var params = {
-        store_name: completed.store_name,
-        product_name: completed.product_name,
-        quantity: completed.quantity,
-        price: completed.price,
-        deadline: completed.deadline,
-        store_notes: completed.store_notes,
-        picture: completed.picture,
-        status: "Completed",
-      };
-
-      axios.patch("/api/completed/" + completed.id, params).then((response) => {
-        console.log(response.data);
-        this.currentCompleted = {};
-      });
-      //
-      axios.delete("/api/products/" + product.id).then((response) => {
-        console.log(response.data);
-        // delete in frontend
-        var index = this.products.indexOf(product);
-        this.products.splice(index, 1);
-
-        console.log(index);
-      });
-    },
+    //   axios.post("/api/completed", params).then((response) => {
+    //     console.log(response.data);
+    //     this.completed.push(response.data);
+    //   });
+    // },
   },
 };
-
-// new/create
-// get user input
-// keep track of it
-// send that user input to rails
-// get the response from rails
-// take that response and show it to the user
 </script>
+
