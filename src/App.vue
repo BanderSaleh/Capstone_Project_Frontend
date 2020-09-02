@@ -69,49 +69,53 @@
 
     <router-view/>
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <router-link to="/about">[about]</router-link> |
-            <router-link to="contact">[contact]</router-link> |
-            <router-link to="/faq">[faq]</router-link> |
-            <router-link to="/terms">[terms]</router-link> |
-            <router-link to="/privacy">[privacy]</router-link>
-            <p class="copyright text-muted"></p>
-              <p></p>
-              <p>A Bander Saleh production</p>
-              <p>© 2020, Bander Saleh. All rights reserved.</p>
+    <div id="footer">
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <ul class="list-inline text-center">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <router-link to="/about">[about]</router-link> |
+              <router-link to="contact">[contact]</router-link> |
+              <router-link to="/faq">[faq]</router-link> |
+              <router-link to="/terms">[terms]</router-link> |
+              <router-link to="/privacy">[privacy]</router-link>
+              <p class="copyright text-muted"></p>
+                <p></p>
+                <p>A Bander Saleh production</p>
+                <p>© 2020, Bander Saleh. All rights reserved.</p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
+  
     
   </div>
 
@@ -122,12 +126,16 @@
 
 
 <style>
-/* #app {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#footer {
+  font-weight: bold;
 }
 
 #nav {
@@ -141,7 +149,7 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-} */
+}
 </style>
 
 

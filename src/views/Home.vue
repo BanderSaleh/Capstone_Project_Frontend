@@ -24,23 +24,12 @@
 
     
 
-     <!-- Page Header -->
-  <!-- <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Shopping List App, save paper!</h1>
-            <span class="subheading">An App by Bander Saleh</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header> -->
+     
 
 
+    <hr>
     <h1>Create New Shopping List Item:</h1>
+    <hr>
     <div>
       <p>Store Name: <input v-model="newProductStoreName" type="text"></p>
       <p>Product Name: <input v-model="newProductName" type="text"></p>
@@ -51,14 +40,12 @@
       <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
       
       <button v-on:click="addProduct()">Add Product</button>
-
+  
       
     </div>
 
-    
 
-
-   <h1> </h1>
+   
    
 
   
@@ -86,65 +73,71 @@
 
     <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
 
-    <h2>{{ message }}</h2>
-
+    <!-- <hr>
+    <button>Customize Shopping List (2 Total Designs)</button>
+    <hr>
+    <h1>{{ message }}</h1> -->
+    
+    
     
     <div id="app">
-      <SortedTable :values="products">
-        <thead>
-          <tr>
-            <th scope="col" style="button: left; width: 10rem;">
-              <SortLink name="button">Complete/Edit</SortLink>
+      <div :style="{ backgroundImage: `url('${wallpaper2}' )`  }">
+        <SortedTable :values="products">
+          <thead>
+            <tr>
+              <th scope="col" style="button: left; width: 10rem;">
+                <SortLink name="button">Complete/Edit</SortLink>
 
+                
+
+
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="id">ID</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="store_name">Store Name</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="product_name">Product Name</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="quantity">Quantity</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="price">Price</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="deadline">Deadline</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="status">Status</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="picture">Picture</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="store_notes">Notes</SortLink>
+              </th>
+            </tr>
+          </thead>
+          <tbody slot="body" slot-scope="sort">
+            <tr v-for="product in sort.values" :key="product.id">
+              <td><button v-on:click="showInfo(product)">COMPLETE/EDIT</button></td>
               
-
-
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="id">ID</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="store_name">Store Name</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="product_name">Product Name</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="quantity">Quantity</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="price">Price</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="deadline">Deadline</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="status">Status</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="picture">Picture</SortLink>
-            </th>
-            <th scope="col" style="text-align: left; width: 10rem;">
-              <SortLink name="store_notes">Notes</SortLink>
-            </th>
-          </tr>
-        </thead>
-        <tbody slot="body" slot-scope="sort">
-          <tr v-for="product in sort.values" :key="product.id">
-            <td><button v-on:click="showInfo(product)">COMPLETE/EDIT/DELETE/CLOSE</button></td>
-            
-            <td>{{ product.id }}</td>
-            <td>{{ product.store_name }}</td>
-            <td>{{ product.product_name }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.deadline }}</td>
-            <td>{{ product.status = "Carted" }}</td>
-            <td>{{ product.picture}}</td>
-            <td>{{ product.store_notes}}</td>
-          </tr>
-        </tbody>
-      </SortedTable>
+              <td>{{ product.id }}</td>
+              <td>{{ product.store_name }}</td>
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.deadline }}</td>
+              <td>{{ product.status = "Carted" }}</td>
+              <td>{{ product.picture}}</td>
+              <td>{{ product.store_notes}}</td>
+            </tr>
+          </tbody>
+        </SortedTable>
+      </div>
     </div>
 
     
@@ -194,6 +187,9 @@
 </template>
 
 <style>
+/* #app {
+  background-image: url("img/post-bg.jpg");
+} */
 </style>
 
 <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
@@ -241,7 +237,8 @@ export default {
       currentComplete: {},
       image1: require("@/assets/images/shopping_list_1.jpg"),
       image2: require("@/assets/images/shopping_list_2.jpeg"),
-      BG1: require("@/assets/images/Wallpaper1.png"),
+      wallpaper1: require("@/assets/images/Wallpaper1.jpg"),
+      wallpaper2: require("@/assets/images/Wallpaper2.png"),
     };
   },
   created: function () {

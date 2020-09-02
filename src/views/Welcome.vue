@@ -27,6 +27,7 @@
     <hr>
 
     <h1>To save your Shopping List(s), please Login or Signup!</h1>
+    <h3>Then, click on the "My Shopping List" button in the Header ^</h3>
 
     <hr>
     
@@ -42,34 +43,65 @@
 
     <h4>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h4>
 
-    <h4> App Running Proof:</h4>
+    <h1> App Running Proof:</h1>
 
     <h1>N/A</h1>
 
-    <h2>Inspiration for the "Shopping List App, Save Paper!":</h2>
+    <h1>Inspiration for the "Shopping List App, Save Paper!":</h1>
 
     <h4> List Style #1:</h4>
 
     <img :src="image1" width="900" alt="Casual Jacket">
 
+    <hr>
+
     <h4> List Style #2:</h4>
 
     <img :src="image2" width="900" alt="Casual Jacket">
+
+    <hr>
 
     <h4> List Style #3:</h4>
 
     <img :src="image3" width="900" alt="Casual Jacket">
 
+    <hr>
+
     <h4> List Style #4:</h4>
 
     <img :src="image4" width="900" alt="Casual Jacket">
 
-    <h4> List Style #5:</h4>
+    <hr>
+
+    <h4> List Style #5: Multiple Color Options!</h4>
 
     <img :src="image5" width="900" alt="Casual Jacket">
 
-    <h4> List Style #3:</h4>
-    <h4> [Figure out styles list]</h4>
+    <hr>
+
+    <h4> List Style #6: </h4>
+
+    <img :src="imagegoogle3" width="900" alt="Casual Jacket">
+
+    <hr>
+
+    <h4> List Style #7: </h4>
+
+    <img :src="imagegoogle2" width="900" alt="Casual Jacket">
+
+    <hr>
+
+    <h4> List Style #8: </h4>
+
+    <img :src="imagegoogle1" width="900" alt="Casual Jacket">
+
+    <hr>
+
+    <h4> Shopping List Styles:</h4>
+
+    <h4> [Figure out styles list] </h4>
+
+    
 
     <h1>:)</h1>
 
@@ -82,28 +114,7 @@
 
 
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
 
 
 
@@ -120,6 +131,9 @@ export default {
       image3: require("@/assets/images/Inspiration3.jpg"),
       image4: require("@/assets/images/Inspiration4.jpg"),
       image5: require("@/assets/images/Inspiration5StickyNotes.jpg"),
+      imagegoogle1: require("@/assets/images/shopping_list_1.jpg"),
+      imagegoogle2: require("@/assets/images/shopping_list_2.jpeg"),
+      imagegoogle3: require("@/assets/images/shopping_list_3.jpg"),
     };
   },
   created: function () {
