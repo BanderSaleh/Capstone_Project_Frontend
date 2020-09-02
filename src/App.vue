@@ -1,12 +1,15 @@
 <template>
 
 
-
   <div id="app">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      
       <div class="container">
+        <hr>
+        <hr>
+
         <a class="navbar-brand"v-if="!isLoggedIn()"</a>
         <a class="navbar-brand"v-if="isLoggedIn()" href="/home">My Shopping List</a>
 
@@ -49,30 +52,17 @@
       </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Shopping List App,</h1>
-              <span class="subheading">Save Paper!</span>
-              
+    
 
-              
+    
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+    
 
     <!-- Main Content -->
     
     
 
-    <hr>
+    
 
     <!-- Footer -->
     
@@ -110,7 +100,7 @@
               </li>
             </ul>
             <router-link to="/about">[about]</router-link> |
-            <router-link to="/contact">[contact]</router-link> |
+            <router-link to="contact">[contact]</router-link> |
             <router-link to="/faq">[faq]</router-link> |
             <router-link to="/terms">[terms]</router-link> |
             <router-link to="/privacy">[privacy]</router-link>

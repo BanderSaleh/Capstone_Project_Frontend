@@ -1,33 +1,77 @@
 <template>
+
+
+
   <div class="welcome">
-  <h1>[ To save your Shopping List(s), please Login or Signup! ]</h1>
-  <h1> </h1>
-  
 
-  <h2>App Features:</h2>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Shopping List App,</h1>
+              <span class="subheading">Save Paper!</span>
+              
 
-  <h4>-Customizable Shopping Lists to save paper!</h4>
+              
 
-  <h4>-Shopping Lists made with Smart Tables for fluidity.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-  <h4>-Statistics Page containing Smart Graphs that display how well you have been grocery shopping!</h4>
+    
+    <hr>
 
-  <h4>-Statistics Page also contain a Smart Map that display visited stores, notes about specific/nonspecific store name locations, and other User's opinions on specific store locations.</h4>
+    <h1>To save your Shopping List(s), please Login or Signup!</h1>
 
-  <h4>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h4>
+    <hr>
+    
+    <h1>App Features:</h1>
 
-  <h4> App Running Proof:</h4>
+    <h4>-Customizable Shopping Lists to save paper!</h4>
 
-  <img :src="image1" width="900" alt="Casual Jacket">
+    <h4>-Shopping Lists made with Smart Tables for fluidity.</h4>
 
-  <h4> List Style #2:</h4>
+    <h4>-Statistics page containing Smart Graphs that display how well you have been grocery shopping lately!</h4>
 
-  <img :src="image2" width="900" alt="Casual Jacket">
+    <h4>-Statistics page also containing a Smart Map that displays visited stores, notes about specific/nonspecific store name locations, and other User's opinions on specific store locations.</h4>
 
-  <h4> List Style #3:</h4>
-  <h4> [Figure out styles list]</h4>
+    <h4>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h4>
 
-  <h1>:)</h1>
+    <h4> App Running Proof:</h4>
+
+    <h1>N/A</h1>
+
+    <h2>Inspiration for the "Shopping List App, Save Paper!":</h2>
+
+    <h4> List Style #1:</h4>
+
+    <img :src="image1" width="900" alt="Casual Jacket">
+
+    <h4> List Style #2:</h4>
+
+    <img :src="image2" width="900" alt="Casual Jacket">
+
+    <h4> List Style #3:</h4>
+
+    <img :src="image3" width="900" alt="Casual Jacket">
+
+    <h4> List Style #4:</h4>
+
+    <img :src="image4" width="900" alt="Casual Jacket">
+
+    <h4> List Style #5:</h4>
+
+    <img :src="image5" width="900" alt="Casual Jacket">
+
+    <h4> List Style #3:</h4>
+    <h4> [Figure out styles list]</h4>
+
+    <h1>:)</h1>
 
   
 </div>
@@ -71,8 +115,11 @@ export default {
     return {
       message: "My Shopping List:",
       products: [],
-      image1: require("@/assets/images/shopping_list_1.jpg"),
-      image2: require("@/assets/images/shopping_list_2.jpeg"),
+      image1: require("@/assets/images/Inspiration1.jpg"),
+      image2: require("@/assets/images/Inspiration2.jpg"),
+      image3: require("@/assets/images/Inspiration3.jpg"),
+      image4: require("@/assets/images/Inspiration4.jpg"),
+      image5: require("@/assets/images/Inspiration5StickyNotes.jpg"),
     };
   },
   created: function () {

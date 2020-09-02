@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="forgotpassword">
 
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/post-bg.jpg')">
@@ -17,21 +17,27 @@
           </div>
         </div>
       </div>
-  </header>
+    </header>
+
   
-    <h1>My Account</h1>
-
-    <h2>Insert Username: [params]</h2>
-    <h2>Insert email: {{ email }}</h2>
-    
-
-
-   
-
+    <form v-on:submit.prevent="submit()">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h1>Forgot Password?</h1>
+        <ul>
+          <li class="text-danger" v-for="error in errors">{{ error }}</li>
+        </ul>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" class="form-control" v-model="email">
+        </div>
+        
+        <input type="emailpw" class="btn btn-primary" value="Send">
+      </div>
+    </form>
   </div>
+  
 
-
-
+  
 </template>
 
 <script>
@@ -52,7 +58,7 @@ export default {
         password: this.password,
       };
       axios
-        .get("/api/sessions/1", params)
+        .post("/api/sessions", params)
         .then((response) => {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;

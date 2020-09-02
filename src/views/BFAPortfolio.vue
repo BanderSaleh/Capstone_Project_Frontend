@@ -1,5 +1,21 @@
 <template>
-  <div class="signup">
+  <div class="portfolio">
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/about-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Bander Saleh's Portfolio</h1>
+              <span class="subheading">BFA in Film. Lots of Graphic Design Electives.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <h1>Bander Saleh's BFA in Film Portfolio</h1>
     <h2> Documentary Style: </h2>
     
