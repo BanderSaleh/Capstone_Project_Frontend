@@ -97,16 +97,15 @@
 
     <hr>
 
-    <h4> Shopping List Styles:</h4>
-
-    <h4> [Figure out styles list] </h4>
-
     
 
-    <h1>:)</h1>
+    <h1>*Customizable* Shopping List App, Save Paper!</h1>
+
+    <hr>
+
 
   
-</div>
+  </div>
     
 
 </template>
