@@ -73,10 +73,10 @@
 
     <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
 
-    <!-- <hr>
-    <button>Customize Shopping List (2 Total Designs)</button>
     <hr>
-    <h1>{{ message }}</h1> -->
+    <!-- <button>Customize Shopping List (2 Total Designs)</button>
+    <hr> -->
+    <h1>{{ message }}</h1>
     
     
     
