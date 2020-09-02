@@ -8,21 +8,23 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1>Man must explore, and this is exploration at its greatest</h1>
-              <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-              <span class="meta">Posted by
-                <a href="#">Start Bootstrap</a>
-                on August 24, 2019</span>
+              <h1>My Account</h1>
+              <!-- <h2 class="subheading">Shopping List App, Save Paper!</h2> -->
+              <span class="meta">
+                <a href="#">Shopping List App,</a>
+                Save Paper!</span>
             </div>
           </div>
         </div>
       </div>
   </header>
-  
-    <h1>My Account</h1>
 
-    <h2>Insert Username: [params]</h2>
-    <h2>Insert email: {{ email }}</h2>
+    <hr>
+    <h1>My Name: {{ current_username }}</h1>
+    <h1>My Email: {{ current_email }}</h1>
+    <hr>
+    <!-- <h1>My Password: <a class="nav-link" href="/forgotpassword">Reset password</a></h1>
+    <hr> -->
     
 
 
@@ -43,6 +45,8 @@ export default {
       email: "",
       password: "",
       errors: [],
+      current_username: "some name",
+      current_email: "somename@email.com",
     };
   },
   methods: {
