@@ -81,7 +81,7 @@
     
     
     <div id="app">
-      <div :style="{ backgroundImage: `url('${wallpaper2}' )`  }">
+      <div :style="{ backgroundImage: `url('${wallpaper1}' )`  }">
         <SortedTable :values="products">
           <thead>
             <tr>
