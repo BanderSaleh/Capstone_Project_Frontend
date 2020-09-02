@@ -62,8 +62,21 @@
       </form>
     </dialog>
 
+    
 
-    <h2>(Customizable Smart Graph Goes Here!)</h2>
+    <h2>Customizable Smart Graph (Goes Below):</h2>
+
+    <hr>
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    
+
+    <h2>Customizable Smart Map (Goes Below):</h2>
+
+    <hr>
+
+    <h2>Smart Map goes here.</h2>
 
    
 
@@ -76,16 +89,21 @@
 <style>
 </style>
 
-<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+
 
 
 
 
 <script>
 import axios from "axios";
+import { Bar } from "vue-chartjs";
 
 export default {
+  extends: Bar,
+  mounted() {
+    this.renderChart(data, options);
+  },
   data: function () {
     return {
       message: "My Completed Shopping List History:",

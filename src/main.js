@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SortedTablePlugin from "vue-sorted-table";
 
 
+
 Vue.use(SortedTablePlugin);
 
 
