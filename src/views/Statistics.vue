@@ -18,7 +18,49 @@
       </div>
     </header>
 
+
+    <!-- Graph this data:
+    v-model="currentComplete.quantity"
+    v-model="currentComplete.timestamp" -->
+
     
+
+    <div class="logos">
+      <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
+      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
+    </div>
+    <h1>Completed Shopping Quantity vs Date Completed!</h1>
+    <!-- <hr style="width: 200px; margin: 60px auto;"> -->
+    <!-- <h3>Select graph type:</h3> -->
+    <div class="button-grp">
+      <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button> -->
+
+      <!-- <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button> -->
+      
+      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Third Graph</button> -->
+
+      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
+    </div>
+    <keep-alive>
+      <component :is="currentView"></component>
+    </keep-alive>
+
+    <hr>
+
+    
+
+    
+ 
+    
+
+    <h2>Customizable Smart Map (Goes Below):</h2>
+
+    <hr>
+
+    <h2>Smart Map goes here.</h2>
+
+    <hr>
+
     <div v-for="complete in completed">
       <p>Store Name: {{ complete.store_name }}</p>
       <p>Product Name: {{ complete.product_name }}</p> 
@@ -61,43 +103,6 @@
 
       </form>
     </dialog>
-
-    
-
-    <h2>Customizable Smart Graph (Goes Below):</h2>
-
-    <hr>
-
-    <div class="logos">
-      <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
-      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
-    </div>
-    <h2>Welcome in Vue Highcharts Wrapper Demo</h2>
-    <hr style="width: 200px; margin: 60px auto;">
-    <h3>Select chart constructor:</h3>
-    <div class="button-grp">
-      <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Chart</button>
-      <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Stock Chart</button>
-      <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>
-    </div>
-    <keep-alive>
-      <component :is="currentView"></component>
-    </keep-alive>
-
-    
-
-    
-
-    <canvas id="myChart" width="400" height="400"></canvas>
-
-    
-
-    <h2>Customizable Smart Map (Goes Below):</h2>
-
-    <hr>
-
-    <h2>Smart Map goes here.</h2>
-
    
 
   </div>
@@ -123,10 +128,16 @@ import MapChart from "./components/MapChart";
 
 export default {
   name: "app",
+  components: {
+    chart: Chart,
+    stockChart: StockChart,
+    mapChart: MapChart,
+  },
   data: function () {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
+      completedChart: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
       newCompletedQuantity: "",
@@ -137,14 +148,9 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
-      selected: "chart",
-      currentView: "chart",
+      selected: "stockChart",
+      currentView: "stockChart",
     };
-  },
-  components: {
-    chart: Chart,
-    stockChart: StockChart,
-    mapChart: MapChart,
   },
   created: function () {
     this.indexCompleted();
@@ -156,6 +162,10 @@ export default {
       axios.get("/api/completed").then((response) => {
         console.log(response);
         this.completed = response.data;
+      });
+      axios.get("/api/completed").then((response) => {
+        console.log(response);
+        this.completedChart = response.data;
       });
     },
     showInfo: function (complete) {

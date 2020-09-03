@@ -2,13 +2,22 @@
   <highcharts class="stock" :constructor-type="'stockChart'" :options="stockOptions"></highcharts>
 </template>
 
+
+<style scoped>
+.stock {
+  width: 70%;
+  margin: 0 auto;
+}
+</style>
+
+
 <script>
 export default {
   data() {
     return {
       stockOptions: {
         rangeSelector: {
-          selected: 1,
+          selected: null,
         },
         title: {
           text: "AAPL Stock Price",
@@ -29,9 +38,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.stock {
-  width: 70%;
-  margin: 0 auto;
-}
-</style>

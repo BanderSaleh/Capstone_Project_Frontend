@@ -1,8 +1,8 @@
-import { mount } from '@vue/test-utils'
-import generateVueComponent from '../src/component'
-import Highcharts from 'highcharts'
+import { mount } from '@vue/test-utils';
+import generateVueComponent from '../src/component';
+import Highcharts from 'highcharts';
 
-const Chart = generateVueComponent(Highcharts)
+const Chart = generateVueComponent(Highcharts);
 
 const propsData = {
   options: {

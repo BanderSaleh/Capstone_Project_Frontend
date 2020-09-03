@@ -61,52 +61,59 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      title: '',
+      title: "",
       points: [10, 0, 8, 2, 6, 4, 5, 5],
-      chartType: 'Spline',
-      seriesColor: '#6fcd98',
+      chartType: "Spline",
+      seriesColor: "#6fcd98",
       colorInputIsSupported: null,
       animationDuration: 1000,
-      updateArgs: [true, true, {duration: 1000}],
+      updateArgs: [true, true, { duration: 1000 }],
       chartOptions: {
         chart: {
-          type: 'spline'
+          type: "spline",
         },
         title: {
-          text: 'Sin chart'
+          text: "Sin chart",
         },
-        series: [{
-          data: [10, 0, 8, 2, 6, 4, 5, 5],
-          color: '#6fcd98'
-        }]
-      }
-    }
+        series: [
+          {
+            data: [10, 0, 8, 2, 6, 4, 5, 5],
+            color: "#6fcd98",
+          },
+        ],
+        rangeSelector: {
+          enabled: false,
+        },
+      },
+    };
   },
-  created () {
-    let i = document.createElement('input')
-    i.setAttribute('type', 'color');
-    (i.type === 'color') ? this.colorInputIsSupported = true : this.colorInputIsSupported = false
+  created() {
+    let i = document.createElement("input");
+    i.setAttribute("type", "color");
+    i.type === "color"
+      ? (this.colorInputIsSupported = true)
+      : (this.colorInputIsSupported = false);
   },
   watch: {
-    title (newValue) {
-      this.chartOptions.title.text = newValue
+    title(newValue) {
+      this.chartOptions.title.text = newValue;
     },
-    points (newValue) {
-      this.chartOptions.series[0].data = newValue
+    points(newValue) {
+      this.chartOptions.series[0].data = newValue;
     },
-    chartType (newValue) {
-      this.chartOptions.chart.type = newValue.toLowerCase()
+    chartType(newValue) {
+      this.chartOptions.chart.type = newValue.toLowerCase();
     },
-    seriesColor (newValue) {
-      this.chartOptions.series[0].color = newValue.toLowerCase()
+    seriesColor(newValue) {
+      this.chartOptions.series[0].color = newValue.toLowerCase();
     },
-    animationDuration (newValue) {
-      this.updateArgs[2].duration = Number(newValue)
-    }
-  }
-}
+    animationDuration(newValue) {
+      this.updateArgs[2].duration = Number(newValue);
+    },
+  },
+};
 </script>
 
 <style scoped>

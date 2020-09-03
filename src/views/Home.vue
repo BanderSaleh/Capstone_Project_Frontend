@@ -196,11 +196,21 @@
 <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
 
 <script>
-  new Vue({
-    ...
-    mixins: [Vue2Filters.mixin],
-    ...
-  })
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      info: null,
+    };
+  },
+  mounted() {
+    //here do your request to get data from your API
+    //e.i with axios => https://www.npmjs.com/package/axios
+    axios
+      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+      .then((response) => (this.info = response));
+  },
+});
 </script>
 
 
