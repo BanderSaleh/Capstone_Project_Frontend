@@ -2,6 +2,17 @@
   <highcharts :constructor-type="'mapChart'" :options="mapOptions" class="map"></highcharts>
 </template>
 
+
+
+<style scoped>
+.map {
+  min-height: 500px;
+}
+</style>
+
+
+
+
 <script>
 export default {
   data() {
@@ -9,9 +20,17 @@ export default {
       mapOptions: {
         chart: {
           map: "myMapName",
+          // borderWidth: 2,
+          // spacingBottom: 15,
+          // spacingTop: 10,
+          // spacingLeft: 100,
+          // spacingRight: 100,
+          // Explicitly tell the width and height of a chart
+          // width: 1260,
+          height: 800,
         },
         title: {
-          text: "Highmaps basic demo",
+          text: "Completed Shopping Locations:",
         },
         subtitle: {
           text:
@@ -261,8 +280,3 @@ export default {
   },
 };
 </script>
- <style scoped>
-.map {
-  min-height: 500px;
-}
-</style>

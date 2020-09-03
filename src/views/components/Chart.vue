@@ -18,39 +18,61 @@ export default {
       stockOptions: {
         chart: {
           type: "column",
-          marginLeft: 150,
+          height: 800,
           zoomType: "xy",
         },
         rangeSelector: {
           selected: 1,
         },
         title: {
-          text: "Completed Shopping Quantity vs Date Completed!",
+          text: "",
         },
         subtitle: {
+          useHTML: true,
           text: "Bar Graph",
+          style: {
+            paddingBottom: "20px",
+            font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
+          },
         },
         navigator: {
           enabled: false,
         },
         xAxis: {
-          accessibility: {
-            rangeDescription: "Range: 2010 to 2017",
+          title: {
+            text: "Date",
+            style: {
+              font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
+            },
           },
-          scrollbar: {
-            enabled: false,
-          },
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
         },
         yAxis: {
           title: {
-            text: "Completed Shopping Quantity",
+            text: "Completed Quantity",
+            style: {
+              font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
+            },
           },
           opposite: false,
         },
         legend: {
-          layout: "verticle",
+          layout: "vertical",
           align: "right",
-          verticleAlign: "middle",
+          verticalAlign: "middle",
         },
         plotOptions: {
           series: {
@@ -62,15 +84,15 @@ export default {
         },
         series: [
           {
-            name: "Installation",
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
+            name: "User",
+            data: [32, 24, 25, 35, 25],
           },
         ],
         responsive: {
           rules: [
             {
               condition: {
-                maxWidth: 500,
+                maxWidth: 750,
               },
               chartOptions: {
                 legend: {

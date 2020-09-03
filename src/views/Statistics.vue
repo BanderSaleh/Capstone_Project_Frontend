@@ -11,7 +11,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
               <h1>My Statistics</h1>
-              <span class="subheading">Completed Shopping List Data.</span>
+              <span class="subheading">[Smart Graph] [Smart Map]</span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
       <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
       <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
     </div>
-    <h1>Completed Shopping: Quantity vs Date Completed!</h1>
+    <h1>Completed Shopping Data: Quantity vs Date!</h1>
     <hr style="width: 200px; margin: 60px auto;">
     <h3>Select graph type:</h3>
     <div class="button-grp">
@@ -53,33 +53,55 @@
  
     
 
-    <h2>Customizable Smart Map (Goes Below):</h2>
+
 
     <hr>
 
-    <h2>Smart Map goes here.</h2>
+      <div class="maps">
+        <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
+        <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
+      </div>
+      <h1>Smart Map Containing: Public/Private Store Notes!</h1>
+      <hr style="width: 200px; margin: 60px auto;">
+      <!-- <h3>Select graph type:</h3> -->
+      <div class="button-grq">
+        <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
+        
+        <button @click="select('areaChart')" :class="{btnActive: selected === 'areaChart'}">Area Graph</button>
 
-    <hr>
+        <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button> -->
 
-    <div v-for="complete in completed">
-      <p>Store Name: {{ complete.store_name }}</p>
-      <p>Product Name: {{ complete.product_name }}</p> 
-      <p>Quantity: {{ complete.quantity }}</p>
-      <p>Price: {{ complete.price }}</p>
-      <p>Deadline: {{ complete.deadline }}</p>
-      <p>Store Notes: {{ complete.store_notes }}</p>
-      <p>Timestamp: {{ complete.timestamp }}</p>
-      <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
-      <p>Status: Completed</p>
-
-      <h1>
-        <button v-on:click="showInfo(complete)">EDIT</button>
-      </h1>
-
+        <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
+      </div>
+      <keep-alive>
+        <component :is="currentMap"></component>
+      </keep-alive>
 
       <hr>
+
+      <h1>Hide Below Eventually:</h1>
+
+      <hr>
+
+      <div v-for="complete in completed">
+        <p>Store Name: {{ complete.store_name }}</p>
+        <p>Product Name: {{ complete.product_name }}</p> 
+        <p>Quantity: {{ complete.quantity }}</p>
+        <p>Price: {{ complete.price }}</p>
+        <p>Deadline: {{ complete.deadline }}</p>
+        <p>Store Notes: {{ complete.store_notes }}</p>
+        <p>Timestamp: {{ complete.timestamp }}</p>
+        <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+        <p>Status: Completed</p>
+
+        <h1>
+          <button v-on:click="showInfo(complete)">EDIT</button>
+        </h1>
+
+
+        <hr>
      
-    </div>
+      </div>
 
     <dialog id="completed-details">
       <form method="dialog">
@@ -152,6 +174,7 @@ export default {
       currentComplete: {},
       selected: "stockChart",
       currentView: "stockChart",
+      currentMap: "mapChart",
     };
   },
   created: function () {
