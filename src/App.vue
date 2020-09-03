@@ -156,6 +156,9 @@
 
 <script>
 import axios from "axios";
+import Chart from "./components/Chart.vue";
+import StockChart from "./components/StockChart";
+import MapChart from "./components/MapChart";
 
 export default {
   data: function () {
@@ -164,7 +167,14 @@ export default {
       products: [],
       image1: require("@/assets/images/shopping_list_1.jpg"),
       image2: require("@/assets/images/shopping_list_2.jpeg"),
+      selected: "chart",
+      currentView: "chart",
     };
+  },
+  components: {
+    chart: Chart,
+    stockChart: StockChart,
+    mapChart: MapChart,
   },
   created: function () {
     this.indexProducts();

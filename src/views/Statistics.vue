@@ -68,6 +68,26 @@
 
     <hr>
 
+    <div class="logos">
+      <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
+      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
+    </div>
+    <h2>Welcome in Vue Highcharts Wrapper Demo</h2>
+    <hr style="width: 200px; margin: 60px auto;">
+    <h3>Select chart constructor:</h3>
+    <div class="button-grp">
+      <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Chart</button>
+      <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Stock Chart</button>
+      <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>
+    </div>
+    <keep-alive>
+      <component :is="currentView"></component>
+    </keep-alive>
+
+    
+
+    
+
     <canvas id="myChart" width="400" height="400"></canvas>
 
     
@@ -97,13 +117,12 @@
 
 <script>
 import axios from "axios";
-import { Bar } from "vue-chartjs";
+import Chart from "./components/Chart.vue";
+import StockChart from "./components/StockChart";
+import MapChart from "./components/MapChart";
 
 export default {
-  extends: Bar,
-  mounted() {
-    this.renderChart(data, options);
-  },
+  name: "app",
   data: function () {
     return {
       message: "My Completed Shopping List History:",
@@ -118,7 +137,14 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
+      selected: "chart",
+      currentView: "chart",
     };
+  },
+  components: {
+    chart: Chart,
+    stockChart: StockChart,
+    mapChart: MapChart,
   },
   created: function () {
     this.indexCompleted();
@@ -136,6 +162,21 @@ export default {
       console.log(complete);
       this.currentComplete = complete;
       document.querySelector("#completed-details").showModal();
+    },
+    activate(elem) {
+      this.selected = elem;
+    },
+    handler() {
+      var args = arguments;
+      for (var arg of args) {
+        if (arg instanceof Function) {
+          arg();
+        }
+      }
+    },
+    select(elem) {
+      this.currentView = elem;
+      this.activate(elem);
     },
     // addCompleted: function () {
     //   console.log("adding product...");
