@@ -29,15 +29,15 @@
       <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
       <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
     </div>
-    <h1>Completed Shopping Quantity vs Date Completed!</h1>
-    <!-- <hr style="width: 200px; margin: 60px auto;"> -->
-    <!-- <h3>Select graph type:</h3> -->
+    <h1>Completed Shopping: Quantity vs Date Completed!</h1>
+    <hr style="width: 200px; margin: 60px auto;">
+    <h3>Select graph type:</h3>
     <div class="button-grp">
-      <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button> -->
-
-      <!-- <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button> -->
+      <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
       
-      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Third Graph</button> -->
+      <button @click="select('areaChart')" :class="{btnActive: selected === 'areaChart'}">Area Graph</button>
+
+      <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button>
 
       <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
     </div>
@@ -124,6 +124,7 @@
 import axios from "axios";
 import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
+import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
 
 export default {
@@ -131,6 +132,7 @@ export default {
   components: {
     chart: Chart,
     stockChart: StockChart,
+    areaChart: AreaChart,
     mapChart: MapChart,
   },
   data: function () {

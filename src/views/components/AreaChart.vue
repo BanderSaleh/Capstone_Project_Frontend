@@ -17,7 +17,7 @@ export default {
     return {
       stockOptions: {
         chart: {
-          type: "line",
+          type: "area",
           marginLeft: 150,
           zoomType: "xy",
         },
@@ -28,7 +28,7 @@ export default {
           text: "Completed Shopping Quantity vs Date Completed!",
         },
         subtitle: {
-          text: "Line Graph",
+          text: "Area Graph",
         },
         navigator: {
           enabled: false,
