@@ -35,6 +35,18 @@ export default {
             font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
           },
         },
+        legend: {
+          layout: "vertical",
+          align: "right",
+          verticalAlign: "top",
+          y: 50,
+          padding: 3,
+          itemMarginTop: 5,
+          itemMarginBottom: 5,
+          itemStyle: {
+            lineHeight: "14px",
+          },
+        },
         navigator: {
           enabled: false,
         },
@@ -44,68 +56,42 @@ export default {
             style: {
               font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
             },
+            categories: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            crosshair: true,
           },
-          categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
         },
+        series: [
+          {
+            data: [32, 24, 25, 35, 25],
+            name: "User.Current",
+          },
+        ],
         yAxis: {
           title: {
             text: "Completed Quantity",
+
             style: {
               font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
             },
           },
           opposite: false,
         },
-        legend: {
-          layout: "vertical",
-          align: "right",
-          verticalAlign: "middle",
-        },
-        plotOptions: {
-          series: {
-            label: {
-              connectorAllowed: false,
-            },
-            pointStart: 2010,
-          },
-        },
-        series: [
-          {
-            name: "User",
-            data: [32, 24, 25, 35, 25],
-          },
-        ],
-        responsive: {
-          rules: [
-            {
-              condition: {
-                maxWidth: 750,
-              },
-              chartOptions: {
-                legend: {
-                  layout: "horizontal",
-                  align: "center",
-                  verticleAlign: "bottom",
-                },
-              },
-            },
-          ],
-        },
       },
     };
   },
 };
 </script>
+        
