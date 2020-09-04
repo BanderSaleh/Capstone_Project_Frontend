@@ -102,7 +102,7 @@ const routes = [
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
   {
-    path: "/BFAPortfolio",
+    path: "/portfolio",
     name: "BFAPortfolio",
     component: () =>
       import(

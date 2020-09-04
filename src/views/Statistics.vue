@@ -9,6 +9,7 @@
             <div class="page-heading">
               <h1>My Statistics</h1>
               <span class="subheading">[Smart Graph] [Smart Map]</span>
+              <span class="subheading">[Smart Table]</span>
             </div>
           </div>
         </div>
