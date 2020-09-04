@@ -43,3 +43,19 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount("#app");
+
+// new Vue({
+//   el: '#app',
+//   data() {
+//     return {
+//       info: null
+//     }
+//   },
+//   mounted() {
+//     //here do your request to get data from your API
+//     //e.i with axios => https://www.npmjs.com/package/axios
+//     axios
+//       .get('http://localhost:3000/api/completed')
+//       .then(response => (this.info = response))
+//   }
+// })

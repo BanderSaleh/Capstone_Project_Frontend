@@ -79,7 +79,14 @@
 
       <hr>
 
-      <h1>Hide Below Eventually:</h1>
+      <div v-for="complete in completed">
+        <h1>Hide Below Eventually:</h1>
+        <h1>Answer #1:</h1>
+        <p>Quantity: {{ complete.quantity }} </p>
+        <p>Timestamp: {{ complete.timestamp }}</p>
+
+
+      </div>
 
       <hr>
 
@@ -92,6 +99,7 @@
         <p>Store Notes: {{ complete.store_notes }}</p>
         <p>Timestamp: {{ complete.timestamp }}</p>
         <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+
         <p>Status: Completed</p>
 
         <h1>
@@ -102,8 +110,8 @@
         <hr>
      
       </div>
-
-    <dialog id="completed-details">
+      
+      <dialog id="completed-details">
       <form method="dialog">
         <h1>Product info</h1>
         <p>Store Name: <input type="text" v-model="currentComplete.store_name" /></p>
@@ -116,15 +124,16 @@
         <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
         <p>Status: Completed</p>
         
-        <button v-on:click="updateProduct(currentProduct)">Update</button>
+        <button v-on:click="updateProduct(currentComplete)">Update</button>
 
-        <button v-on:click="destroyProduct(currentProduct)">Delete Product</button>
+        <button v-on:click="destroyProduct(currentComplete)">Delete Product</button>
 
         <button>Close</button>
 
 
       </form>
     </dialog>
+
    
 
   </div>
