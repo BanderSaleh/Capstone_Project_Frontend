@@ -224,6 +224,13 @@ export default {
         this.currentComplete = {};
       });
     },
+    destroyComplete: function(complete) {
+      axios.delete("/api/completed/" + complete.id).then(response => {
+        console.log(response);
+        var index = this.completed.indexOf(complete);
+        this.completed.splice(index, 1);
+      });
+    },
     activate(elem) {
       this.selected = elem;
     },
