@@ -1,8 +1,5 @@
 <template>
-
-
   <div class="Statistics">
-
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/about-bg.jpg')">
       <div class="overlay"></div>
@@ -18,26 +15,42 @@
       </div>
     </header>
 
-
     <!-- Graph this data:
     v-model="currentComplete.quantity"
     v-model="currentComplete.timestamp" -->
 
-    
-
     <div class="logos">
-      <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
-      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
+      <img
+        class="logo-hc"
+        src="./assets/highcharts_logo.png"
+        alt="Highcharts Logo"
+      />
+      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo" />
     </div>
     <h1>Completed Shopping Data: Quantity vs Date!</h1>
-    <hr style="width: 200px; margin: 60px auto;">
+    <hr style="width: 200px; margin: 60px auto;" />
     <h3>Select graph type:</h3>
     <div class="button-grp">
-      <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
-      
-      <button @click="select('areaChart')" :class="{btnActive: selected === 'areaChart'}">Area Graph</button>
+      <button
+        @click="select('stockChart')"
+        :class="{ btnActive: selected === 'stockChart' }"
+      >
+        Line Graph
+      </button>
 
-      <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button>
+      <button
+        @click="select('areaChart')"
+        :class="{ btnActive: selected === 'areaChart' }"
+      >
+        Area Graph
+      </button>
+
+      <button
+        @click="select('chart')"
+        :class="{ btnActive: selected === 'chart' }"
+      >
+        Bar Graph
+      </button>
 
       <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
     </div>
@@ -45,73 +58,66 @@
       <component :is="currentView"></component>
     </keep-alive>
 
-    <hr>
+    <hr />
 
-    
+    <hr />
 
-    
- 
-    
-
-
-
-    <hr>
-
-      <div class="maps">
-        <img class="logo-hc" src="./assets/highcharts_logo.png" alt="Highcharts Logo">
-        <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo">
-      </div>
-      <h1>Smart Map Containing: Public/Private Store Notes!</h1>
-      <hr style="width: 200px; margin: 60px auto;">
-      <!-- <h3>Select graph type:</h3> -->
-      <div class="button-grq">
-        <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
+    <div class="maps">
+      <img
+        class="logo-hc"
+        src="./assets/highcharts_logo.png"
+        alt="Highcharts Logo"
+      />
+      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo" />
+    </div>
+    <h1>Smart Map Containing: Public/Private Store Notes!</h1>
+    <hr style="width: 200px; margin: 60px auto;" />
+    <!-- <h3>Select graph type:</h3> -->
+    <div class="button-grq">
+      <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
         
         <button @click="select('areaChart')" :class="{btnActive: selected === 'areaChart'}">Area Graph</button>
 
         <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button> -->
 
-        <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
-      </div>
-      <keep-alive>
-        <component :is="currentMap"></component>
-      </keep-alive>
+      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
+    </div>
+    <keep-alive>
+      <component :is="currentMap"></component>
+    </keep-alive>
 
-      <hr>
+    <hr />
 
-      <div v-for="complete in completed">
-        <h1>Hide Below Eventually:</h1>
-        <h1>Answer #1:</h1>
-        <p>Quantity: {{ complete.quantity }} </p>
-        <p>Timestamp: {{ complete.timestamp }}</p>
+    <div v-for="complete in completed">
+      <h1>Hide Below Eventually:</h1>
+      <h1>Answer #1:</h1>
+      <p>Quantity: {{ complete.quantity }}</p>
+      <p>Timestamp: {{ complete.timestamp }}</p>
+    </div>
 
+    <hr />
 
-      </div>
+    <div v-for="complete in completed">
+      <dialog id=""
+      <p>Store Name: {{ complete.store_name }}</p>
+      <p>Product Name: {{ complete.product_name }}</p>
+      <p>Quantity: {{ complete.quantity }}</p>
+      <p>Price: {{ complete.price }}</p>
+      <p>Deadline: {{ complete.deadline }}</p>
+      <p>Store Notes: {{ complete.store_notes }}</p>
+      <p>Timestamp: {{ complete.timestamp }}</p>
+      <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+      <p>Image: {{ complete.image }}</p>
+      <p>Status: Completed</p>
 
-      <hr>
+      <h1>
+        <button v-on:click="showInfo(complete)">EDIT</button>
+      </h1>
 
-      <div v-for="complete in completed">
-        <p>Store Name: {{ complete.store_name }}</p>
-        <p>Product Name: {{ complete.product_name }}</p> 
-        <p>Quantity: {{ complete.quantity }}</p>
-        <p>Price: {{ complete.price }}</p>
-        <p>Deadline: {{ complete.deadline }}</p>
-        <p>Store Notes: {{ complete.store_notes }}</p>
-        <p>Timestamp: {{ complete.timestamp }}</p>
-        <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+      <hr />
+    </div>
 
-        <p>Status: Completed</p>
-
-        <h1>
-          <button v-on:click="showInfo(complete)">EDIT</button>
-        </h1>
-
-
-        <hr>
-     
-      </div>
-      
-      <dialog id="completed-details">
+    <dialog id="completed-details">
       <form method="dialog">
         <h1>Product info</h1>
         <p>Store Name: <input type="text" v-model="currentComplete.store_name" /></p>
@@ -122,34 +128,22 @@
         <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
         <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
         <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
-        <p>Status: Completed</p>
-        
-        <button v-on:click="updateProduct(currentComplete)">Update</button>
 
-        <button v-on:click="destroyProduct(currentComplete)">Delete Product</button>
+        <p>Status: Completed</p>
+
+        <button v-on:click="updateComplete(currentComplete)">Update</button>
+
+        <button v-on:click="destroyComplete(currentComplete)">
+          Delete Product
+        </button>
 
         <button>Close</button>
-
-
       </form>
     </dialog>
-
-   
-
   </div>
-
-
-
 </template>
 
-<style>
-</style>
-
-
-
-
-
-
+<style></style>
 
 <script>
 import axios from "axios";
@@ -166,10 +160,11 @@ export default {
     areaChart: AreaChart,
     mapChart: MapChart,
   },
-  data: function () {
+  data: function() {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
+      complete: [],
       completedChart: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
@@ -186,11 +181,11 @@ export default {
       currentMap: "mapChart",
     };
   },
-  created: function () {
+  created: function() {
     this.indexCompleted();
   },
   methods: {
-    indexCompleted: function () {
+    indexCompleted: function() {
       console.log("completed index...");
 
       axios.get("/api/completed").then((response) => {
@@ -202,10 +197,32 @@ export default {
         this.completedChart = response.data;
       });
     },
-    showInfo: function (complete) {
+    showInfo: function(complete) {
       console.log(complete);
       this.currentComplete = complete;
       document.querySelector("#completed-details").showModal();
+    },
+    updateComplete: function(complete) {
+      console.log(complete);
+
+      var params = {
+        id: complete.id,
+        store_name: complete.store_name,
+        product_name: complete.product_name,
+        quantity: complete.quantity,
+        price: complete.price,
+        deadline: complete.deadline,
+        store_notes: complete.store_notes,
+        timestamp: complete.timestamp,
+        store_notes_timestamp: complete.store_notes_timestamp,
+        picture: complete.picture,
+        status: "Completed",
+      };
+
+      axios.patch("/api/completed/" + complete.id, params).then((response) => {
+        console.log(response.data);
+        this.currentComplete = {};
+      });
     },
     activate(elem) {
       this.selected = elem;
@@ -244,4 +261,3 @@ export default {
   },
 };
 </script>
-
