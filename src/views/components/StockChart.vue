@@ -1,7 +1,10 @@
 <template>
-  <highcharts class="stock" :constructor-type="'stockChart'" :options="stockOptions"></highcharts>
+  <highcharts
+    class="stock"
+    :constructor-type="'stockChart'"
+    :options="stockOptions"
+  ></highcharts>
 </template>
-
 
 <style scoped>
 .stock {
@@ -9,7 +12,6 @@
   margin: 0 auto;
 }
 </style>
-
 
 <script>
 export default {
@@ -82,7 +84,6 @@ export default {
         yAxis: {
           title: {
             text: "Completed Quantity",
-
             style: {
               font: 'bold 32px "Trebuchet MS", Verdana, sans-serif',
             },
@@ -94,4 +95,3 @@ export default {
   },
 };
 </script>
-        

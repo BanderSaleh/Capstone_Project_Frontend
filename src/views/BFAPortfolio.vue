@@ -10,6 +10,7 @@
             <div class="page-heading">
               <h1>Bander Saleh's Portfolio</h1>
               <span class="subheading">BFA in Film. Lots of Graphic Design Electives.</span>
+              <span class="subheading">Certificate in Software Engineering.</span>
             </div>
           </div>
         </div>
