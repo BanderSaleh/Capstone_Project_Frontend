@@ -65,8 +65,6 @@
     
 
     <!-- Footer -->
-    
-
     <router-view/>
 
     <div id="footer">

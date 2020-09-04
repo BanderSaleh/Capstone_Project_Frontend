@@ -151,6 +151,10 @@ import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
 import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
+import Highcharts from 'highcharts';
+import exportingInit from 'highcharts/modules/exporting';
+
+exportingInit(Highcharts)
 
 export default {
   name: "app",

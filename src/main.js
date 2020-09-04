@@ -5,12 +5,16 @@ import axios from "axios";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SortedTablePlugin from "vue-sorted-table";
-import HighchartsVue from 'highcharts-vue';
-import Highcharts from 'highcharts';
-import stockInit from 'highcharts/modules/stock';
-import mapInit from 'highcharts/modules/map';
-import addWorldMap from './js/worldmap';
+import HighchartsVue from "highcharts-vue";
+import Highcharts from "highcharts";
+import stockInit from "highcharts/modules/stock";
+import mapInit from "highcharts/modules/map";
+import addWorldMap from "./js/worldmap";
+import dataModule from "highcharts/modules/data";
+import threeDimensionsHC from "highcharts/highcharts-3d";
 
+dataModule(Highcharts);
+threeDimensionsHC(Highcharts);
 
 stockInit(Highcharts);
 mapInit(Highcharts);
@@ -19,18 +23,8 @@ addWorldMap(Highcharts);
 Vue.use(HighchartsVue);
 Vue.use(SortedTablePlugin);
 
-
-
-
-
-
-
-
-
-
-
-
-axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
 var jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -41,7 +35,7 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
 
 // new Vue({
