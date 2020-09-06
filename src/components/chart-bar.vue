@@ -24,14 +24,9 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {
-      completed: [],
-      complete: [],
-      completedChart: [],
       beginZero: true,
       labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       types: [
@@ -49,13 +44,6 @@ export default {
         },
       ],
     };
-  },
-  indexGraphed: function() {
-    console.log("Graph Data from Completed2...");
-    axios.get("/api/completed/show2").then((response) => {
-      console.log(response);
-      this.completedChart = response.data;
-    });
   },
 };
 </script>

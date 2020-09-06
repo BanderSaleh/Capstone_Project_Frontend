@@ -9,7 +9,7 @@
             <div class="page-heading">
               <h1>My Statistics</h1>
               <span class="subheading">[Smart Graph] [Smart Map]</span>
-              <span class="subheading">[Smart Table]</span>
+              <!-- <span class="subheading">[Smart Table]</span> -->
             </div>
           </div>
         </div>
@@ -20,25 +20,42 @@
 
     <!-- Chart 1 -->
     <div>
-      <h1>Chart Demo</h1>
+      <h1>Completed Shopping Data: Quantity vs Date</h1>
 
-      <div class="grid">
-        <ChartBar />
-        <!-- <ChartDoughnut />
-        <ChartLine /> -->
-      </div>
+      <img alt="Vue logo" src="./assets/logo.png">
+
+      <line-chart :data="chartData"></line-chart>
+
+      <!-- <div class="grid"> -->
+        <!-- <ChartBar /> -->
+        <!-- <ChartDoughnut /> -->
+        <!-- <ChartLine /> -->
+      <!-- </div> -->
     </div>
+
+    
 
 
 
     <h1>Chart Data</h1>
+    <!-- <p>Graphable Data: {{ completedChart }}</p> -->
+    <!-- <p>Timestamp: {{ completedChart }}</p> -->
+    <!-- <p>Quantity: {{ completedChart }}</p> -->
+
+
     <div v-for="completeChart in completedChart">
       <dialog id=""
-      <p>Timestamp: {{ completeChart.timestamp }}</p>
       <p>Quantity: {{ completeChart.quantity }}</p>
-
-      <hr>
+      <p>Timestamp: {{ completeChart.timestamp }}</p>
+      <hr />
     </div>
+
+
+
+    <hr>
+
+    
+ 
 
 
    
@@ -125,6 +142,8 @@
 
     <h1>Full Completed Tables:</h1>
 
+    <!-- <p>Graphable Data: {{ completed }}</p> -->
+
     <div v-for="complete in completed">
       <dialog id=""
       <p>Store Name: {{ complete.store_name }}</p>
@@ -177,7 +196,7 @@
 
 <script>
 import axios from "axios";
-import Chart from "./components/Chart.vue";
+// import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
 import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
@@ -186,6 +205,14 @@ import exportingInit from "highcharts/modules/exporting";
 import ChartBar from "@/components/chart-bar";
 import ChartDoughnut from "@/components/chart-doughnut";
 import ChartLine from "@/components/chart-line";
+import { Line } from 'vue-chartjs';
+import { Bar } from 'vue-chartjs';
+import Chartkick from "vue-chartkick";
+import Chart from "chart.js";
+ 
+Chartkick.use(Chart);
+
+
 
 exportingInit(Highcharts);
 
@@ -200,6 +227,7 @@ export default {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
+      complete: [],
       completedChart: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
@@ -214,6 +242,7 @@ export default {
       selected: "stockChart",
       currentView: "stockChart",
       currentMap: "mapChart",
+      chartData: {},
     };
   },
   created: function () {
@@ -224,13 +253,14 @@ export default {
     indexCompleted: function () {
       console.log("completed index...");
 
-      axios.get("/api/completed").then((response) => {
-        console.log(response);
-        this.completed = response.data;
+      axios.get("/api/completed").then((response2) => {
+        console.log(response2);
+        this.completed = response2.data;
       });
     },
     indexChart: function () {
       console.log("Graph Data from Completed2...");
+
       axios.get("/api/completed/show2").then((response) => {
         console.log(response);
         this.completedChart = response.data;
@@ -269,21 +299,6 @@ export default {
         var index = this.completed.indexOf(complete);
         this.completed.splice(index, 1);
       });
-    },
-    activate(elem) {
-      this.selected = elem;
-    },
-    handler() {
-      var args = arguments;
-      for (var arg of args) {
-        if (arg instanceof Function) {
-          arg();
-        }
-      }
-    },
-    select(elem) {
-      this.currentView = elem;
-      this.activate(elem);
     },
   },
 };

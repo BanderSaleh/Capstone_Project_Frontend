@@ -14,10 +14,15 @@ import dataModule from "highcharts/modules/data";
 import threeDimensionsHC from "highcharts/highcharts-3d";
 import "chart.js";
 import "hchs-vue-charts";
-Vue.use(window.VueCharts);
+import Chartkick from "vue-chartkick";
+import Chart from "chart.js";
+
+Chartkick.use(Chart);
 
 dataModule(Highcharts);
 threeDimensionsHC(Highcharts);
+
+Vue.use(Chartkick.use(Chart));
 
 stockInit(Highcharts);
 mapInit(Highcharts);

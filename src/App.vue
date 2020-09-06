@@ -154,9 +154,14 @@
 
 <script>
 import axios from "axios";
-import Chart from "./components/Chart.vue";
+// import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
 import MapChart from "./components/MapChart";
+// import Chartkick from "chartkick";
+// import Chart from "chart.js";
+ 
+// Chartkick.use(Chart);
+
 
 export default {
   data: function () {
