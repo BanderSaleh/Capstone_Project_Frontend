@@ -52,17 +52,14 @@
       >
         Bar Graph
       </button>
-
-      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
     </div>
     <keep-alive>
       <component :is="currentView"></component>
     </keep-alive>
 
-    <hr />
+    <hr>
 
-    <hr />
-
+<!-- 
     <div class="maps">
       <img
         class="logo-hc"
@@ -73,15 +70,9 @@
     </div>
     <h1>Smart Map Containing: Public/Private Store Notes!</h1>
     <hr style="width: 200px; margin: 60px auto;" />
-    <!-- <h3>Select graph type:</h3> -->
+
     <div class="button-grq">
-      <!-- <button @click="select('stockChart')" :class="{btnActive: selected === 'stockChart'}">Line Graph</button>
-        
-        <button @click="select('areaChart')" :class="{btnActive: selected === 'areaChart'}">Area Graph</button>
 
-        <button @click="select('chart')" :class="{btnActive: selected === 'chart'}">Bar Graph</button> -->
-
-      <!-- <button @click="select('mapChart')" :class="{btnActive: selected === 'mapChart'}">Map Chart</button>       -->
     </div>
     <keep-alive>
       <component :is="currentMap"></component>
@@ -94,9 +85,9 @@
       <h1>Answer #1:</h1>
       <p>Quantity: {{ complete.quantity }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
-    </div>
+    </div> -->
 
-    <hr />
+    <!-- <hr> -->
 
     <div v-for="complete in completed">
       <dialog id=""

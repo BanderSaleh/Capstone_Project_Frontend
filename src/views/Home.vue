@@ -275,18 +275,6 @@ export default {
         this.products = response.data;
       });
     },
-    // indexCompleted: function () {
-    //   console.log("completed index...");
-
-    //   axios.get("/api/completed").then((response) => {
-    //     console.log(response);
-    //     this.completed = response.data;
-    //   });
-    //   axios.get("/api/completed").then((response) => {
-    //     console.log(response);
-    //     this.completedChart = response.data;
-    //   });
-    // },
     completedProduct: function (product) {
       console.log("completing product...");
       var params = {
