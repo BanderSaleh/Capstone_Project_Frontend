@@ -22,7 +22,7 @@
     <div>
       <h1>Completed Shopping Data: Quantity vs Date</h1>
 
-      <img alt="Vue logo" src="./assets/logo.png">
+      <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
 
       <line-chart :data="chartData"></line-chart>
 
@@ -192,7 +192,9 @@
   </div>
 </template>
 
-<style></style>
+<style>
+
+</style>
 
 <script>
 import axios from "axios";
@@ -229,6 +231,7 @@ export default {
       completed: [],
       complete: [],
       completedChart: [],
+      completeChart: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
       newCompletedQuantity: "",
@@ -242,7 +245,7 @@ export default {
       selected: "stockChart",
       currentView: "stockChart",
       currentMap: "mapChart",
-      chartData: {},
+      chartData: {'2020-07': 1, '2020-08': 2, '2020-09': 5},      
     };
   },
   created: function () {
@@ -266,6 +269,13 @@ export default {
         this.completedChart = response.data;
       });
     },    
+    graphData: function () {
+      console.log("Prep data before graphing")
+      axios.get("/api/completed/show2").then((response3) => {
+        console.log(response3);
+        this.chartData = {};
+      });
+    },
     showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
