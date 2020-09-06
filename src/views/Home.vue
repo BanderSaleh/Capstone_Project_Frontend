@@ -225,6 +225,7 @@ export default {
     return {
       message: "My Shopping List:",
       products: [],
+      product: [],
       newProductStoreName: "",
       newProductName: "",
       newProductQuantity: "",
@@ -234,7 +235,7 @@ export default {
       newProductStatus: "",
       newProductPicture: "",
       currentProduct: {},
-      completed: [],
+      completed: {},
       newCompletedStoreName: "",
       newCompletedProductName: "",
       newCompletedQuantity: "",
@@ -244,7 +245,7 @@ export default {
       newCompletedTimestamp: "",
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
-      currentComplete: {},
+      currentCompleted: {},
       image1: require("@/assets/images/shopping_list_1.jpg"),
       image2: require("@/assets/images/shopping_list_2.jpeg"),
       wallpaper1: require("@/assets/images/Wallpaper1.jpg"),
@@ -274,31 +275,33 @@ export default {
         this.products = response.data;
       });
     },
+    // indexCompleted: function () {
+    //   console.log("completed index...");
+
+    //   axios.get("/api/completed").then((response) => {
+    //     console.log(response);
+    //     this.completed = response.data;
+    //   });
+    //   axios.get("/api/completed").then((response) => {
+    //     console.log(response);
+    //     this.completedChart = response.data;
+    //   });
+    // },
     completedProduct: function (product) {
-      console.log(product);
+      console.log("completing product...");
       var params = {
-        store_name: completed.store_name,
-        product_name: completed.product_name,
-        quantity: completed.quantity,
-        price: completed.price,
-        deadline: completed.deadline,
-        store_notes: completed.store_notes,
-        picture: completed.picture,
-        status: "Completed",
+        store_name: product.store_name,
+        product_name: product.product_name,
+        quantity: product.quantity,
+        price: product.price,
+        deadline: product.deadline,
+        store_notes: product.store_notes,
+        picture: product.picture,
+        status: "Carted",
       };
-
-      axios.patch("/api/completed/" + completed.id, params).then((response) => {
+      axios.post("/api/completed/create", params).then((response) => {
         console.log(response.data);
-        this.currentCompleted = {};
-      });
-      //
-      axios.delete("/api/products/" + product.id).then((response) => {
-        console.log(response.data);
-        // delete in frontend
-        var index = this.products.indexOf(product);
-        this.products.splice(index, 1);
-
-        console.log(index);
+        this.completed.push(response.data);
       });
     },
     addProduct: function () {
