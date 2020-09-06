@@ -12,6 +12,9 @@ import mapInit from "highcharts/modules/map";
 import addWorldMap from "./js/worldmap";
 import dataModule from "highcharts/modules/data";
 import threeDimensionsHC from "highcharts/highcharts-3d";
+import "chart.js";
+import "hchs-vue-charts";
+Vue.use(window.VueCharts);
 
 dataModule(Highcharts);
 threeDimensionsHC(Highcharts);

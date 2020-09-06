@@ -16,10 +16,39 @@
       </div>
     </header>
 
+
+
+    <!-- Chart 1 -->
+    <div>
+      <h1>Chart Demo</h1>
+
+      <div class="grid">
+        <ChartBar />
+        <!-- <ChartDoughnut />
+        <ChartLine /> -->
+      </div>
+    </div>
+
+
+
+    <h1>Chart Data</h1>
+    <div v-for="completeChart in completedChart">
+      <dialog id=""
+      <p>Timestamp: {{ completeChart.timestamp }}</p>
+      <p>Quantity: {{ completeChart.quantity }}</p>
+
+      <hr>
+    </div>
+
+
+   
+
+
+
     <!-- Graph this data:
     v-model="currentComplete.quantity"
     v-model="currentComplete.timestamp" -->
-
+<!-- 
     <div class="logos">
       <img
         class="logo-hc"
@@ -57,7 +86,7 @@
       <component :is="currentView"></component>
     </keep-alive>
 
-    <hr>
+    <hr> -->
 
 <!-- 
     <div class="maps">
@@ -87,7 +116,14 @@
       <p>Timestamp: {{ complete.timestamp }}</p>
     </div> -->
 
-    <!-- <hr> -->
+    <!-- <div v-for="complete in completed">
+      <h1>Hide Below Eventually:</h1>
+      <h1>Answer #1:</h1>
+      <p>Quantity: {{ complete.quantity }}</p>
+      <p>Timestamp: {{ complete.timestamp }}</p>
+    </div> -->
+
+    <h1>Full Completed Tables:</h1>
 
     <div v-for="complete in completed">
       <dialog id=""
@@ -147,22 +183,23 @@ import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
 import Highcharts from "highcharts";
 import exportingInit from "highcharts/modules/exporting";
+import ChartBar from "@/components/chart-bar";
+import ChartDoughnut from "@/components/chart-doughnut";
+import ChartLine from "@/components/chart-line";
 
 exportingInit(Highcharts);
 
 export default {
   name: "app",
   components: {
-    chart: Chart,
-    stockChart: StockChart,
-    areaChart: AreaChart,
-    mapChart: MapChart,
+    ChartBar,
+    ChartDoughnut,
+    ChartLine,
   },
   data: function () {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
-      complete: [],
       completedChart: [],
       newCompletedStoreName: "",
       newCompletedProductName: "",
@@ -181,7 +218,8 @@ export default {
   },
   created: function () {
     this.indexCompleted();
-  },
+    this.indexChart();
+  },  
   methods: {
     indexCompleted: function () {
       console.log("completed index...");
@@ -190,11 +228,14 @@ export default {
         console.log(response);
         this.completed = response.data;
       });
-      axios.get("/api/completed").then((response) => {
+    },
+    indexChart: function () {
+      console.log("Graph Data from Completed2...");
+      axios.get("/api/completed/show2").then((response) => {
         console.log(response);
         this.completedChart = response.data;
       });
-    },
+    },    
     showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
@@ -244,25 +285,6 @@ export default {
       this.currentView = elem;
       this.activate(elem);
     },
-    // addCompleted: function () {
-    //   console.log("adding product...");
-    //   console.log(this.newProductName);
-
-    //   var params = {
-    //     store_name: this.newStoreName,
-    //     product_name: this.newProductName,
-    //     quantity: this.quantity,
-    //     price: this.price,
-    //     deadline: this.deadline,
-    //     newStoreNotesTimestamp: this.newStoreNotesTimestamp,
-    //     status: this.status,
-    //   };
-
-    //   axios.post("/api/completed", params).then((response) => {
-    //     console.log(response.data);
-    //     this.completed.push(response.data);
-    //   });
-    // },
   },
 };
 </script>
