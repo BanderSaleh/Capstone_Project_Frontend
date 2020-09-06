@@ -301,7 +301,15 @@ export default {
       };
       axios.post("/api/completed/create", params).then((response) => {
         console.log(response.data);
-        this.completed.push(response.data);
+        completed.push(response.data);
+      });
+      axios.delete("/api/products/" + product.id).then((response) => {
+        console.log(response.data);
+        // delete in frontend
+        var index = this.products.indexOf(product);
+        this.products.splice(index, 1);
+
+        console.log(index);
       });
     },
     addProduct: function () {
