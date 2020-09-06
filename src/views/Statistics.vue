@@ -108,7 +108,7 @@
       <p>Store Notes: {{ complete.store_notes }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
       <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
-      <p>Image: {{ complete.image }}</p>
+      <p>picture: {{ complete.picture }}</p>
       <p>Status: Completed</p>
 
       <h1>
@@ -129,6 +129,8 @@
         <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
         <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
         <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
+        <p>Picture: <input type="text" v-model="currentComplete.picture" /></p>
+
 
         <p>Status: Completed</p>
 
@@ -152,10 +154,10 @@ import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
 import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
-import Highcharts from 'highcharts';
-import exportingInit from 'highcharts/modules/exporting';
+import Highcharts from "highcharts";
+import exportingInit from "highcharts/modules/exporting";
 
-exportingInit(Highcharts)
+exportingInit(Highcharts);
 
 export default {
   name: "app",
@@ -165,7 +167,7 @@ export default {
     areaChart: AreaChart,
     mapChart: MapChart,
   },
-  data: function() {
+  data: function () {
     return {
       message: "My Completed Shopping List History:",
       completed: [],
@@ -186,11 +188,11 @@ export default {
       currentMap: "mapChart",
     };
   },
-  created: function() {
+  created: function () {
     this.indexCompleted();
   },
   methods: {
-    indexCompleted: function() {
+    indexCompleted: function () {
       console.log("completed index...");
 
       axios.get("/api/completed").then((response) => {
@@ -202,12 +204,12 @@ export default {
         this.completedChart = response.data;
       });
     },
-    showInfo: function(complete) {
+    showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
       document.querySelector("#completed-details").showModal();
     },
-    updateComplete: function(complete) {
+    updateComplete: function (complete) {
       console.log(complete);
 
       var params = {
@@ -229,8 +231,8 @@ export default {
         this.currentComplete = {};
       });
     },
-    destroyComplete: function(complete) {
-      axios.delete("/api/completed/" + complete.id).then(response => {
+    destroyComplete: function (complete) {
+      axios.delete("/api/completed/" + complete.id).then((response) => {
         console.log(response);
         var index = this.completed.indexOf(complete);
         this.completed.splice(index, 1);

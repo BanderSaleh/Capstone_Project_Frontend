@@ -26,7 +26,7 @@
 
      
 
-
+    <!-- Create Section -->
     <hr>
     <h1>Create New Shopping List Item:</h1>
     <hr>
@@ -79,7 +79,7 @@
     <h1>{{ message }}</h1>
     
     
-    
+    <!-- Smart Table Structure -->
     <div id="app">
       <div :style="{ backgroundImage: `url('${wallpaper1}' )`  }">
         <SortedTable :values="products">
@@ -152,7 +152,7 @@
      
 
     
-
+    <!-- Show Product Editable Section -->
     <dialog id="product-details">
       <form method="dialog">
         <h1>Product info</h1>
@@ -165,7 +165,7 @@
         <p>Status: "Carted"</p>
         <p>Picture (URL): <input type="text" v-model="currentProduct.picture" /></p>
 
-        <button v-on:click="completedProduct()">Complete Product</button>
+        <button v-on:click="completedProduct(currentProduct)">Complete Product</button>
 
         
         <button v-on:click="updateProduct(currentProduct)">Update</button>
@@ -274,7 +274,33 @@ export default {
         this.products = response.data;
       });
     },
+    completedProduct: function (product) {
+      console.log(product);
+      var params = {
+        store_name: completed.store_name,
+        product_name: completed.product_name,
+        quantity: completed.quantity,
+        price: completed.price,
+        deadline: completed.deadline,
+        store_notes: completed.store_notes,
+        picture: completed.picture,
+        status: "Completed",
+      };
 
+      axios.patch("/api/completed/" + completed.id, params).then((response) => {
+        console.log(response.data);
+        this.currentCompleted = {};
+      });
+      //
+      axios.delete("/api/products/" + product.id).then((response) => {
+        console.log(response.data);
+        // delete in frontend
+        var index = this.products.indexOf(product);
+        this.products.splice(index, 1);
+
+        console.log(index);
+      });
+    },
     addProduct: function () {
       console.log("adding product...");
       console.log(this.newProductName);
@@ -321,33 +347,6 @@ export default {
     destroyProduct: function (product) {
       console.log(product);
       // delete it in the backend (rails)
-      axios.delete("/api/products/" + product.id).then((response) => {
-        console.log(response.data);
-        // delete in frontend
-        var index = this.products.indexOf(product);
-        this.products.splice(index, 1);
-
-        console.log(index);
-      });
-    },
-    completedProduct: function (product) {
-      console.log(product);
-      var params = {
-        store_name: completed.store_name,
-        product_name: completed.product_name,
-        quantity: completed.quantity,
-        price: completed.price,
-        deadline: completed.deadline,
-        store_notes: completed.store_notes,
-        picture: completed.picture,
-        status: "Completed",
-      };
-
-      axios.patch("/api/completed/" + completed.id, params).then((response) => {
-        console.log(response.data);
-        this.currentCompleted = {};
-      });
-      //
       axios.delete("/api/products/" + product.id).then((response) => {
         console.log(response.data);
         // delete in frontend
