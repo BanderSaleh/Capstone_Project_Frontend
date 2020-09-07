@@ -16,6 +16,8 @@ import "chart.js";
 import "hchs-vue-charts";
 import Chartkick from "vue-chartkick";
 import Chart from "chart.js";
+import "@/plugins/echarts";
+import Vue2Filters from "vue2-filters";
 
 Chartkick.use(Chart);
 

@@ -19,26 +19,26 @@
 
 
     <!-- Chart 1 -->
-    <div>
+    <!-- <div>
       <h1>Completed Shopping Data: Quantity vs Date</h1>
+  
+      <line-chart :data="chartData" :width="10" :height="10"></line-chart>
 
-      <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    </div> -->
 
-      <line-chart :data="chartData"></line-chart>
-
-      <!-- <div class="grid"> -->
-        <!-- <ChartBar /> -->
-        <!-- <ChartDoughnut /> -->
-        <!-- <ChartLine /> -->
-      <!-- </div> -->
+    <!-- Chart 2 -->
+    <div id="chartwrapper" style="text-align:center">
+      <h1>Completed Shopping Data: Quantity vs Date</h1>
+      <chart :options="chartOptionsBar"></chart>
     </div>
 
-    
 
     
 
+    
 
 
+    <hr>
     <h1>Chart Data:</h1>
     <p>Graphable Data: {{ completedChart }}</p>
     <!-- <p>Timestamp: {{ completedChart }}</p> -->
@@ -49,7 +49,6 @@
       <dialog id=""
       <p>Timestamp: {{ completeChart.timestamp }}</p>
       <p>Quantity: {{ completeChart.quantity }}</p>
-      <!-- <p>Graph info test: {{ dailyData }}</p> -->
       <hr />
     </div>
 
@@ -157,7 +156,7 @@
       <p>Store Notes: {{ complete.store_notes }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
       <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
-      <p>picture: {{ complete.picture }}</p>
+      <img v-bind:src="complete.picture" height=" 120px">
       <p>Status: Completed</p>
 
       <h1>
@@ -247,10 +246,42 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
+      chartOptionsBar: {
+        xAxis: {
+          data: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            type: 'line',
+            data: [63, 75, 24, 92]
+          }
+        ],
+        title: {
+          text: 'Quantity Completed',
+          x: "center",
+        },
+      },
+      color: ["#127ac2"],
       // selected: "stockChart",
       // currentView: "stockChart",
       // currentMap: "mapChart",
-      chartData: {"2020-07-01": 10, "2020-08-01": 7, "2020-09-06": 5},      
+    //   chartData: {"2020-07-01": 10, "2020-08-01": 7, "2020-09-06": 5},      
     };
   },
   created: function () {

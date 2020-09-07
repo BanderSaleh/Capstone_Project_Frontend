@@ -1,8 +1,5 @@
 <template>
-
-  
   <div class="Home">
-  
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/home-bg.jpg')">
       <div class="overlay"></div>
@@ -12,44 +9,31 @@
             <div class="site-heading">
               <h1>Shopping List App,</h1>
               <span class="subheading">Save Paper!</span>
-              
-
-              
-
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    
-
-     
-
     <!-- Create Section -->
-    <hr>
+    <hr />
     <h1>Create New Shopping List Item:</h1>
-    <hr>
+    <hr />
     <div>
-      <p>Store Name: <input v-model="newProductStoreName" type="text"></p>
-      <p>Product Name: <input v-model="newProductName" type="text"></p>
-      <p>Quantity: <input v-model="newProductQuantity" type="text"></p>
-      <p>Price: <input v-model="newProductPrice" type="text"></p>
-      <p>Deadline: <input v-model="newProductDeadline" type="text"></p>
-      <p>Notes: <input v-model="newProductStoreNotes" type="text"></p>
-      <p>Picture (URL): <input v-model="newProductPicture" type="text"></p>
-      
+      <p>Store Name: <input v-model="newProductStoreName" type="text" /></p>
+      <p>Product Name: <input v-model="newProductName" type="text" /></p>
+      <p>Quantity: <input v-model="newProductQuantity" type="text" /></p>
+      <p>Price: <input v-model="newProductPrice" type="text" /></p>
+      <p>Deadline: <input v-model="newProductDeadline" type="text" /></p>
+      <p>Notes: <input v-model="newProductStoreNotes" type="text" /></p>
+      <p>Picture (URL): <input v-model="newProductPicture" type="text" /></p>
+
       <button v-on:click="addProduct()">Add Product</button>
-  
-      
     </div>
 
+    <hr />
 
-   
-   
-
-  
-  
+    <hr />
 
     <!-- <h2>---------------------------------------------------------------------------------------------</h2>
     <h2>
@@ -69,28 +53,21 @@
 
     <!-- <img :src="BG1" width="900" alt="Casual Jacket"> -->
 
-    
-
     <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
 
-    <hr>
+    <hr />
     <!-- <button>Customize Shopping List (2 Total Designs)</button>
     <hr> -->
     <h1>{{ message }}</h1>
-    
-    
+
     <!-- Smart Table Structure -->
     <div id="app">
-      <div :style="{ backgroundImage: `url('${wallpaper1}' )`  }">
+      <div :style="{ backgroundImage: `url('${wallpaper1}' )` }">
         <SortedTable :values="products">
           <thead>
             <tr>
               <th scope="col" style="button: left; width: 10rem;">
                 <SortLink name="button">Complete/Edit</SortLink>
-
-                
-
-
               </th>
               <th scope="col" style="text-align: left; width: 10rem;">
                 <SortLink name="id">ID</SortLink>
@@ -123,72 +100,64 @@
           </thead>
           <tbody slot="body" slot-scope="sort">
             <tr v-for="product in sort.values" :key="product.id">
-              <td><button v-on:click="showInfo(product)">COMPLETE/EDIT</button></td>
-              
+              <td>
+                <button v-on:click="showInfo(product)">COMPLETE/EDIT</button>
+              </td>
+
               <td>{{ product.id }}</td>
               <td>{{ product.store_name }}</td>
               <td>{{ product.product_name }}</td>
               <td>{{ product.quantity }}</td>
               <td>{{ product.price }}</td>
               <td>{{ product.deadline }}</td>
-              <td>{{ product.status = "Carted" }}</td>
-              <td>{{ product.picture}}</td>
-              <td>{{ product.store_notes}}</td>
+              <td>{{ (product.status = "Carted") }}</td>
+              <img v-bind:src="product.picture" height=" 120px" />
+              <td>{{ product.store_notes }}</td>
             </tr>
           </tbody>
         </SortedTable>
       </div>
     </div>
 
-    
-    
-
-
-
-  
-
-     
-        
-     
-
-    
     <!-- Show Product Editable Section -->
     <dialog id="product-details">
       <form method="dialog">
         <h1>Product info</h1>
-        <p>Store Name: <input type="text" v-model="currentProduct.store_name" /></p>
-        <p>Product Name: <input type="text" v-model="currentProduct.product_name" /></p>
+        <p>
+          Store Name: <input type="text" v-model="currentProduct.store_name" />
+        </p>
+        <p>
+          Product Name:
+          <input type="text" v-model="currentProduct.product_name" />
+        </p>
         <p>Quantity: <input type="text" v-model="currentProduct.quantity" /></p>
         <p>Price: <input type="text" v-model="currentProduct.price" /></p>
         <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
         <p>Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
         <p>Status: "Carted"</p>
-        <p>Picture (URL): <input type="text" v-model="currentProduct.picture" /></p>
+        <p>
+          Picture (URL): <input type="text" v-model="currentProduct.picture" />
+        </p>
 
-        <button v-on:click="completedProduct(currentProduct)">Complete Product</button>
+        <button v-on:click="completedProduct(currentProduct)">
+          Complete Product
+        </button>
 
-        
         <button v-on:click="updateProduct(currentProduct)">Update</button>
 
-        <button v-on:click="destroyProduct(currentProduct)">Delete Product</button>
+        <button v-on:click="destroyProduct(currentProduct)">
+          Delete Product
+        </button>
 
         <button>Close</button>
-
       </form>
     </dialog>
-
-   
-
-
   </div>
-
-
-
 </template>
 
 <style>
-/* #app {
-  background-image: url("img/post-bg.jpg");
+/* #img {
+  width: 10;
 } */
 </style>
 
@@ -213,15 +182,13 @@ new Vue({
 });
 </script>
 
-
-
 <script>
 import axios from "axios";
 // import FileUpload from "./components/FileUpload.vue";
 
 export default {
   name: "Home",
-  data: function () {
+  data: function() {
     return {
       message: "My Shopping List:",
       products: [],
@@ -252,7 +219,7 @@ export default {
       wallpaper2: require("@/assets/images/Wallpaper2.png"),
     };
   },
-  created: function () {
+  created: function() {
     this.indexProducts();
   },
   methods: {
@@ -267,7 +234,7 @@ export default {
         this.products.push(response);
       });
     },
-    indexProducts: function () {
+    indexProducts: function() {
       console.log("products index...");
 
       axios.get("/api/products").then((response) => {
@@ -275,7 +242,7 @@ export default {
         this.products = response.data;
       });
     },
-    completedProduct: function (product) {
+    completedProduct: function(product) {
       console.log("completing product...");
       var params = {
         store_name: product.store_name,
@@ -300,7 +267,7 @@ export default {
         console.log(index);
       });
     },
-    addProduct: function () {
+    addProduct: function() {
       console.log("adding product...");
       console.log(this.newProductName);
 
@@ -319,12 +286,12 @@ export default {
         this.products.push(response.data);
       });
     },
-    showInfo: function (product) {
+    showInfo: function(product) {
       console.log(product);
       this.currentProduct = product;
       document.querySelector("#product-details").showModal();
     },
-    updateProduct: function (product) {
+    updateProduct: function(product) {
       console.log(product);
 
       var params = {
@@ -343,7 +310,7 @@ export default {
         this.currentProduct = {};
       });
     },
-    destroyProduct: function (product) {
+    destroyProduct: function(product) {
       console.log(product);
       // delete it in the backend (rails)
       axios.delete("/api/products/" + product.id).then((response) => {

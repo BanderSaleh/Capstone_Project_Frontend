@@ -35,6 +35,11 @@
   </div>
 </template>
 
+<style scoped>
+#card {
+}
+</style>
+
 <script>
 export default {
   data() {
