@@ -35,24 +35,27 @@
 
     
 
+    
 
 
-    <h1>Chart Data</h1>
-    <!-- <p>Graphable Data: {{ completedChart }}</p> -->
+
+    <h1>Chart Data:</h1>
+    <p>Graphable Data: {{ completedChart }}</p>
     <!-- <p>Timestamp: {{ completedChart }}</p> -->
     <!-- <p>Quantity: {{ completedChart }}</p> -->
 
 
     <div v-for="completeChart in completedChart">
       <dialog id=""
-      <p>Quantity: {{ completeChart.quantity }}</p>
       <p>Timestamp: {{ completeChart.timestamp }}</p>
+      <p>Quantity: {{ completeChart.quantity }}</p>
+      <!-- <p>Graph info test: {{ dailyData }}</p> -->
       <hr />
     </div>
 
 
 
-    <hr>
+   
 
     
  
@@ -209,8 +212,10 @@ import ChartDoughnut from "@/components/chart-doughnut";
 import ChartLine from "@/components/chart-line";
 import { Line } from 'vue-chartjs';
 import { Bar } from 'vue-chartjs';
+import VueCharts from 'vue-chartjs';
 import Chartkick from "vue-chartkick";
 import Chart from "chart.js";
+import LineChart from '@/components/LineChart';
  
 Chartkick.use(Chart);
 
@@ -242,10 +247,10 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
-      selected: "stockChart",
-      currentView: "stockChart",
-      currentMap: "mapChart",
-      chartData: {'2020-07': 1, '2020-08': 2, '2020-09': 5},      
+      // selected: "stockChart",
+      // currentView: "stockChart",
+      // currentMap: "mapChart",
+      chartData: {"2020-07-01": 10, "2020-08-01": 7, "2020-09-06": 5},      
     };
   },
   created: function () {
@@ -269,13 +274,6 @@ export default {
         this.completedChart = response.data;
       });
     },    
-    graphData: function () {
-      console.log("Prep data before graphing")
-      axios.get("/api/completed/show2").then((response3) => {
-        console.log(response3);
-        this.chartData = {};
-      });
-    },
     showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
