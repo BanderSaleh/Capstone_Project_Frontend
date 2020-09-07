@@ -17,7 +17,10 @@ import "hchs-vue-charts";
 import Chartkick from "vue-chartkick";
 import Chart from "chart.js";
 import "@/plugins/echarts";
-import Vue2Filters from "vue2-filters";
+import VueApexCharts from "vue-apexcharts";
+Vue.use(VueApexCharts);
+
+Vue.component("apexchart", VueApexCharts);
 
 Chartkick.use(Chart);
 

@@ -27,11 +27,16 @@
     </div> -->
 
     <!-- Chart 2 -->
-    <div id="chartwrapper" style="text-align:center">
+    <!-- <div id="chartwrapper" style="text-align:center">
       <h1>Completed Shopping Data: Quantity vs Date</h1>
       <chart :options="chartOptionsBar"></chart>
-    </div>
+    </div> -->
 
+    <!-- Chart 3 -->
+   <div>
+     <apexchart width="500" type="line" :options="chartOptions" :series="series"></apexchart>
+     <!-- <button @click="updateChart">Update!</button> -->
+   </div>
 
     
 
@@ -40,7 +45,7 @@
 
     <hr>
     <h1>Chart Data:</h1>
-    <p>Graphable Data: {{ completedChart }}</p>
+    <!-- <p>Graphable Data: {{ completedChart }}</p> -->
     <!-- <p>Timestamp: {{ completedChart }}</p> -->
     <!-- <p>Quantity: {{ completedChart }}</p> -->
 
@@ -156,7 +161,7 @@
       <p>Store Notes: {{ complete.store_notes }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
       <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
-      <img v-bind:src="complete.picture" height=" 120px">
+      <p>Picture: <img v-bind:src="complete.picture" height=" 120px"></p>
       <p>Status: Completed</p>
 
       <h1>
@@ -177,7 +182,7 @@
         <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
         <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
         <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
-        <p>Picture: <input type="text" v-model="currentComplete.picture" /></p>
+        <p>Picture (URL): <input type="text" v-model="currentComplete.picture" /></p>
 
 
         <p>Status: Completed</p>
@@ -211,14 +216,15 @@ import ChartDoughnut from "@/components/chart-doughnut";
 import ChartLine from "@/components/chart-line";
 import { Line } from 'vue-chartjs';
 import { Bar } from 'vue-chartjs';
+import { mixins } from 'vue-chartjs';
 import VueCharts from 'vue-chartjs';
 import Chartkick from "vue-chartkick";
 import Chart from "chart.js";
 import LineChart from '@/components/LineChart';
+import VueApexCharts from 'vue-apexcharts';
+
  
 Chartkick.use(Chart);
-
-
 
 exportingInit(Highcharts);
 
@@ -246,43 +252,56 @@ export default {
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
       currentComplete: {},
-      chartOptionsBar: {
-        xAxis: {
-          data: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-          ],
+      chartOptions: {
+        chart: {
+          id: 'vuechart-example'
         },
-        yAxis: {
-          type: 'value'
-        },
-        series: [
-          {
-            type: 'line',
-            data: [63, 75, 24, 92]
-          }
-        ],
-        title: {
-          text: 'Quantity Completed',
-          x: "center",
+        xaxis: {
+          categories: ["2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01", "2020-06-01", "2020-07-01", "2020-08-01", "2020-09-01"]
         },
       },
-      color: ["#127ac2"],
+      series: [{
+        name: 'series-1',
+        data: [30, 40, 35, 50, 49, 60, 70, 91, 40]
+      }],
+    };
+      // chartOptionsBar: {
+      //   xAxis: {
+      //     data: [
+      //       "Jan",
+      //       "Feb",
+      //       "Mar",
+      //       "Apr",
+      //       "May",
+      //       "Jun",
+      //       "Jul",
+      //       "Aug",
+      //       "Sep",
+      //       "Oct",
+      //       "Nov",
+      //       "Dec"
+      //     ],
+      //   },
+      //   yAxis: {
+      //     type: 'value'
+      //   },
+      //   series: [
+      //     {
+      //       type: 'line',
+      //       data: [63, 75, 24, 92]
+      //     }
+      //   ],
+      //   title: {
+      //     text: 'Quantity Completed',
+      //     x: "center",
+      //   },
+      // },
+      // color: ["#127ac2"],
       // selected: "stockChart",
       // currentView: "stockChart",
       // currentMap: "mapChart",
     //   chartData: {"2020-07-01": 10, "2020-08-01": 7, "2020-09-06": 5},      
-    };
+    // };
   },
   created: function () {
     this.indexCompleted();
@@ -339,6 +358,22 @@ export default {
         this.completed.splice(index, 1);
       });
     },
+    // updateChart() {
+    //   const max = 90;
+    //   const min = 20;
+    //   const newData = this.series[0].data.map(() => {
+    //     return Math.floor(Math.random() * (max - min + 1)) + min
+    //   }),
+    //   const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
+    //   // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
+    //   this.chartOptions = {
+    //     colors: [colors[Math.floor(Math.random()*colors.length)]]
+    //   };
+    //   // In the same way, update the series option
+    //   this.series = [{
+    //     data: newData
+    //   }],
+    // },
   },
 };
 </script>
