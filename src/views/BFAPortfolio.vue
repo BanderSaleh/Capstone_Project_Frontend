@@ -55,14 +55,19 @@
     <h2>
       Youtube: Youtube.com/bandersaleh
     </h2>
+
+    
     <h2>
       Vimeo: Vimeo.com/bandersaleh
     </h2>
     <h2>
-    Instagram: instagram.com/bandersaleh93
-  </h2>
+      Instagram: Instagram.com/bandersaleh93
+    </h2>
+    <h2>
+      Email: bandersaleh93@gmail.com
+    </h2>
 
-  <!-- <span class="subheading">[ Location: Silicon Valley, California, USA ].</span> -->
+  <span class="subheading">[ Location: Silicon Valley, California, USA ].</span>
 
     
 

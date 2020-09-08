@@ -20,10 +20,8 @@
       </div>
     </header>
 
-
-
-    <h1>App's Privacy Agreement</h1>
-
+    <h1>App's Privacy</h1>
+    <h2>Privacy Agreement</h2>
 
   </div>
 

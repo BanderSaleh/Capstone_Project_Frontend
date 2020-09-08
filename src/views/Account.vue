@@ -9,7 +9,6 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
               <h1>My Account</h1>
-              <!-- <h2 class="subheading">Shopping List App, Save Paper!</h2> -->
               <span class="meta">
                 <a href="#">Shopping List App,</a>
                 Save Paper!</span>

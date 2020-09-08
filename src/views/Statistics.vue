@@ -18,24 +18,12 @@
 
 
 
-    <!-- Chart 1 -->
-    <!-- <div>
-      <h1>Completed Shopping Data: Quantity vs Date</h1>
-  
-      <line-chart :data="chartData" :width="10" :height="10"></line-chart>
-
-    </div> -->
-
-    <!-- Chart 2 -->
-    <!-- <div id="chartwrapper" style="text-align:center">
-      <h1>Completed Shopping Data: Quantity vs Date</h1>
-      <chart :options="chartOptionsBar"></chart>
-    </div> -->
-
     <!-- Chart 3 -->
-   <div>
-     <apexchart width="500" type="line" :options="chartOptions" :series="series"></apexchart>
-     <!-- <button @click="updateChart">Update!</button> -->
+   <div id="chart3">
+     <h1>Completed Shopping Data: Quantity vs Date</h1>
+  
+    <apexchart width="500" align="center" type="line" :options="chartOptions" :series="series"></apexchart>
+ 
    </div>
 
     
@@ -66,90 +54,8 @@
 
 
    
-
-
-
-    <!-- Graph this data:
-    v-model="currentComplete.quantity"
-    v-model="currentComplete.timestamp" -->
-<!-- 
-    <div class="logos">
-      <img
-        class="logo-hc"
-        src="./assets/highcharts_logo.png"
-        alt="Highcharts Logo"
-      />
-      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo" />
-    </div>
-    <h1>Completed Shopping Data: Quantity vs Date!</h1>
-    <hr style="width: 200px; margin: 60px auto;" />
-    <h3>Select graph type:</h3>
-    <div class="button-grp">
-      <button
-        @click="select('stockChart')"
-        :class="{ btnActive: selected === 'stockChart' }"
-      >
-        Line Graph
-      </button>
-
-      <button
-        @click="select('areaChart')"
-        :class="{ btnActive: selected === 'areaChart' }"
-      >
-        Area Graph
-      </button>
-
-      <button
-        @click="select('chart')"
-        :class="{ btnActive: selected === 'chart' }"
-      >
-        Bar Graph
-      </button>
-    </div>
-    <keep-alive>
-      <component :is="currentView"></component>
-    </keep-alive>
-
-    <hr> -->
-
-<!-- 
-    <div class="maps">
-      <img
-        class="logo-hc"
-        src="./assets/highcharts_logo.png"
-        alt="Highcharts Logo"
-      />
-      <img class="logo-vue" src="./assets/vue_logo.png" alt="Vue Logo" />
-    </div>
-    <h1>Smart Map Containing: Public/Private Store Notes!</h1>
-    <hr style="width: 200px; margin: 60px auto;" />
-
-    <div class="button-grq">
-
-    </div>
-    <keep-alive>
-      <component :is="currentMap"></component>
-    </keep-alive>
-
-    <hr />
-
-    <div v-for="complete in completed">
-      <h1>Hide Below Eventually:</h1>
-      <h1>Answer #1:</h1>
-      <p>Quantity: {{ complete.quantity }}</p>
-      <p>Timestamp: {{ complete.timestamp }}</p>
-    </div> -->
-
-    <!-- <div v-for="complete in completed">
-      <h1>Hide Below Eventually:</h1>
-      <h1>Answer #1:</h1>
-      <p>Quantity: {{ complete.quantity }}</p>
-      <p>Timestamp: {{ complete.timestamp }}</p>
-    </div> -->
-
     <h1>Full Completed Tables:</h1>
 
-    <!-- <p>Graphable Data: {{ completed }}</p> -->
 
     <div v-for="complete in completed">
       <dialog id=""
@@ -200,12 +106,10 @@
 </template>
 
 <style>
-
 </style>
 
 <script>
 import axios from "axios";
-// import Chart from "./components/Chart.vue";
 import StockChart from "./components/StockChart";
 import AreaChart from "./components/AreaChart";
 import MapChart from "./components/MapChart";
@@ -214,16 +118,15 @@ import exportingInit from "highcharts/modules/exporting";
 import ChartBar from "@/components/chart-bar";
 import ChartDoughnut from "@/components/chart-doughnut";
 import ChartLine from "@/components/chart-line";
-import { Line } from 'vue-chartjs';
-import { Bar } from 'vue-chartjs';
-import { mixins } from 'vue-chartjs';
-import VueCharts from 'vue-chartjs';
+import { Line } from "vue-chartjs";
+import { Bar } from "vue-chartjs";
+import { mixins } from "vue-chartjs";
+import VueCharts from "vue-chartjs";
 import Chartkick from "vue-chartkick";
 import Chart from "chart.js";
-import LineChart from '@/components/LineChart';
-import VueApexCharts from 'vue-apexcharts';
+import LineChart from "@/components/LineChart";
+import VueApexCharts from "vue-apexcharts";
 
- 
 Chartkick.use(Chart);
 
 exportingInit(Highcharts);
@@ -254,59 +157,34 @@ export default {
       currentComplete: {},
       chartOptions: {
         chart: {
-          id: 'vuechart-example'
+          id: "vuechart-example",
         },
         xaxis: {
-          categories: ["2020-01-01", "2020-02-01", "2020-03-01", "2020-04-01", "2020-05-01", "2020-06-01", "2020-07-01", "2020-08-01", "2020-09-01"]
+          categories: [
+            "2020-01-01",
+            "2020-02-01",
+            "2020-03-01",
+            "2020-04-01",
+            "2020-05-01",
+            "2020-06-01",
+            "2020-07-01",
+            "2020-08-01",
+            "2020-09-01",
+          ],
         },
       },
-      series: [{
-        name: 'series-1',
-        data: [30, 40, 35, 50, 49, 60, 70, 91, 40]
-      }],
+      series: [
+        {
+          name: "series-1",
+          data: [30, 40, 35, 50, 49, 60, 70, 91, 40],
+        },
+      ],
     };
-      // chartOptionsBar: {
-      //   xAxis: {
-      //     data: [
-      //       "Jan",
-      //       "Feb",
-      //       "Mar",
-      //       "Apr",
-      //       "May",
-      //       "Jun",
-      //       "Jul",
-      //       "Aug",
-      //       "Sep",
-      //       "Oct",
-      //       "Nov",
-      //       "Dec"
-      //     ],
-      //   },
-      //   yAxis: {
-      //     type: 'value'
-      //   },
-      //   series: [
-      //     {
-      //       type: 'line',
-      //       data: [63, 75, 24, 92]
-      //     }
-      //   ],
-      //   title: {
-      //     text: 'Quantity Completed',
-      //     x: "center",
-      //   },
-      // },
-      // color: ["#127ac2"],
-      // selected: "stockChart",
-      // currentView: "stockChart",
-      // currentMap: "mapChart",
-    //   chartData: {"2020-07-01": 10, "2020-08-01": 7, "2020-09-06": 5},      
-    // };
   },
   created: function () {
     this.indexCompleted();
     this.indexChart();
-  },  
+  },
   methods: {
     indexCompleted: function () {
       console.log("completed index...");
@@ -323,7 +201,7 @@ export default {
         console.log(response);
         this.completedChart = response.data;
       });
-    },    
+    },
     showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
@@ -358,22 +236,6 @@ export default {
         this.completed.splice(index, 1);
       });
     },
-    // updateChart() {
-    //   const max = 90;
-    //   const min = 20;
-    //   const newData = this.series[0].data.map(() => {
-    //     return Math.floor(Math.random() * (max - min + 1)) + min
-    //   }),
-    //   const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
-    //   // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
-    //   this.chartOptions = {
-    //     colors: [colors[Math.floor(Math.random()*colors.length)]]
-    //   };
-    //   // In the same way, update the series option
-    //   this.series = [{
-    //     data: newData
-    //   }],
-    // },
   },
 };
 </script>

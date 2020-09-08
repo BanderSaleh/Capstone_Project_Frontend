@@ -25,6 +25,7 @@
 
     <h2>About the Developer:</h2>
     <div id="faqs">
+    <h3>Created by Bander Saleh. Contact my here: bandersaleh93@gmail.com</h3>
     <h3>
       	Portfolio: Personally built an app that allows the user to personalize a Shopping List App that Saves Paper if used instead of hand writing your grocery shopping list. Built on a Ruby-on-Rails backend and a Vue.js frontend, incorporating and modifying Bootstrap elements and JavaScript transition elements.
     </h3>
