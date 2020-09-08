@@ -56,6 +56,8 @@
       <h4>-Statistics page also containing a Smart Map that displays visited stores, notes about specific/nonspecific store name locations, and other User's opinions on specific store locations.</h4>
 
       <h4>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h4>
+
+      <h4>-Current App Version: 1.0</h4>
     </div>
 
     <hr>
