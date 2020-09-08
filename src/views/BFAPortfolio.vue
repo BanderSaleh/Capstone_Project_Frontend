@@ -53,6 +53,10 @@
 
     <hr>
 
+    <span class="subheading">[ Location: Silicon Valley, California, USA ]</span>
+
+    <hr>
+
     <h2>
       Youtube: Youtube.com/bandersaleh
     </h2>
@@ -68,7 +72,7 @@
       Email: bandersaleh93@gmail.com
     </h2>
 
-  <span class="subheading">[ Location: Silicon Valley, California, USA ]</span>
+  
 
     
 
