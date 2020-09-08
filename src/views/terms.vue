@@ -23,6 +23,7 @@
 
 
     <h1>App's Terms</h1>
+    <h2>Terms and Conditions</h2>
 
 
   </div>

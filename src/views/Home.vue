@@ -188,7 +188,7 @@ import axios from "axios";
 
 export default {
   name: "Home",
-  data: function() {
+  data: function () {
     return {
       message: "My Shopping List:",
       products: [],
@@ -219,7 +219,7 @@ export default {
       wallpaper2: require("@/assets/images/Wallpaper2.png"),
     };
   },
-  created: function() {
+  created: function () {
     this.indexProducts();
   },
   methods: {
@@ -234,7 +234,7 @@ export default {
         this.products.push(response);
       });
     },
-    indexProducts: function() {
+    indexProducts: function () {
       console.log("products index...");
 
       axios.get("/api/products").then((response) => {
@@ -242,7 +242,7 @@ export default {
         this.products = response.data;
       });
     },
-    completedProduct: function(product) {
+    completedProduct: function (product) {
       console.log("completing product...");
       var params = {
         store_name: product.store_name,
@@ -267,7 +267,7 @@ export default {
         console.log(index);
       });
     },
-    addProduct: function() {
+    addProduct: function () {
       console.log("adding product...");
       console.log(this.newProductName);
 
@@ -286,12 +286,12 @@ export default {
         this.products.push(response.data);
       });
     },
-    showInfo: function(product) {
+    showInfo: function (product) {
       console.log(product);
       this.currentProduct = product;
       document.querySelector("#product-details").showModal();
     },
-    updateProduct: function(product) {
+    updateProduct: function (product) {
       console.log(product);
 
       var params = {
@@ -310,7 +310,7 @@ export default {
         this.currentProduct = {};
       });
     },
-    destroyProduct: function(product) {
+    destroyProduct: function (product) {
       console.log(product);
       // delete it in the backend (rails)
       axios.delete("/api/products/" + product.id).then((response) => {
