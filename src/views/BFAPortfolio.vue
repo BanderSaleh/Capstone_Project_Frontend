@@ -1,6 +1,7 @@
 <template>
   <div class="portfolio">
 
+
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('img/about-bg.jpg')">
       <div class="overlay"></div>
@@ -25,7 +26,7 @@
 
     <h2> Documentary Style: </h2>
     
-    </h2>
+    <h2>
       <iframe width="640" height="360" src="https://www.youtube.com/embed/9YE5nNWrM0I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </h2>
 
@@ -67,7 +68,7 @@
       Email: bandersaleh93@gmail.com
     </h2>
 
-  <span class="subheading">[ Location: Silicon Valley, California, USA ].</span>
+  <span class="subheading">[ Location: Silicon Valley, California, USA ]</span>
 
     
 

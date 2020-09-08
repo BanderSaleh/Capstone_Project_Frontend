@@ -20,37 +20,19 @@
 
     <!-- Chart 3 -->
    <div id="chart3">
-     <h1>Completed Shopping Data: Quantity vs Date</h1>
-  
+    <h1>Completed Shopping Data: Quantity vs Date</h1>
     <apexchart width="500" align="center" type="line" :options="chartOptions" :series="series"></apexchart>
- 
-   </div>
-
-    
-
-    
-
-
     <hr>
-    <h1>Chart Data:</h1>
-    <!-- <p>Graphable Data: {{ completedChart }}</p> -->
-    <!-- <p>Timestamp: {{ completedChart }}</p> -->
-    <!-- <p>Quantity: {{ completedChart }}</p> -->
-
-
-    <div v-for="completeChart in completedChart">
-      <dialog id=""
-      <p>Timestamp: {{ completeChart.timestamp }}</p>
-      <p>Quantity: {{ completeChart.quantity }}</p>
-      <hr />
-    </div>
-
-
-
+   </div>
    
-
-    
- 
+   <h1>Chart Data:</h1>
+   
+   <div v-for="completeChart in completedChart">
+     <p>Timestamp: {{ completeChart.timestamp }}</p>
+     <p>Quantity: {{ completeChart.quantity }}</p>
+     <hr>
+   </div>
+   
 
 
    
@@ -58,7 +40,6 @@
 
 
     <div v-for="complete in completed">
-      <dialog id=""
       <p>Store Name: {{ complete.store_name }}</p>
       <p>Product Name: {{ complete.product_name }}</p>
       <p>Quantity: {{ complete.quantity }}</p>
@@ -133,11 +114,6 @@ exportingInit(Highcharts);
 
 export default {
   name: "app",
-  components: {
-    ChartBar,
-    ChartDoughnut,
-    ChartLine,
-  },
   data: function () {
     return {
       message: "My Completed Shopping List History:",

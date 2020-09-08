@@ -23,20 +23,24 @@
       </div>
     </header>
 
-
+    
     <hr>
-
-
+    
+    <div class="PressStart">
       <h1>{{ message5 }}</h1>
-
       <a class="header"v-if="!isLoggedIn()">{{ message6 }}</a>
       <a class="header"v-if="isLoggedIn()" href="/home">{{ message6 }}</a>
+    </div>
 
-  
-      <h1>{{ message7 }}</h1>
-
+    <h1>{{ message7 }}</h1>
 
     <hr>
+
+
+  
+    
+
+
     
     
 

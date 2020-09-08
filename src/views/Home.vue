@@ -31,34 +31,13 @@
       <button v-on:click="addProduct()">Add Product</button>
     </div>
 
-    <hr />
+    <hr>
 
-    <hr />
-
-    <!-- <h2>---------------------------------------------------------------------------------------------</h2>
-    <h2>
-    <button v-on:click="changeDesign()">Customize Your Shopping List's Display!</button>
-    </h2> -->
-
-    <!-- <h4> List Style #1:</h4>
-
-    <img :src="image1" width="900" alt="Casual Jacket"> -->
-
-    <!-- <h4> List Style #2:</h4>
-
-    <img :src="image2" width="900" alt="Casual Jacket">
-
-    <h4> List Style #3:</h4>
-    <h4> [Figure out styles list]</h4> -->
-
-    <!-- <img :src="BG1" width="900" alt="Casual Jacket"> -->
-
-    <!-- <h2>---------------------------------------------------------------------------------------------</h2> -->
-
-    <hr />
-    <!-- <button>Customize Shopping List (2 Total Designs)</button>
-    <hr> -->
     <h1>{{ message }}</h1>
+    
+    <hr>
+
+    <!-- <h2><button>Rename:</button>{{ CustomTitle }}</h2> -->
 
     <!-- Smart Table Structure -->
     <div id="app">
@@ -217,6 +196,7 @@ export default {
       image2: require("@/assets/images/shopping_list_2.jpeg"),
       wallpaper1: require("@/assets/images/Wallpaper1.jpg"),
       wallpaper2: require("@/assets/images/Wallpaper2.png"),
+      CustomTitle: " Shopping List Title2",
     };
   },
   created: function () {
@@ -324,11 +304,4 @@ export default {
     },
   },
 };
-
-// new/create
-// get user input
-// keep track of it
-// send that user input to rails
-// get the response from rails
-// take that response and show it to the user
 </script>

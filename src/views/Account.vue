@@ -22,8 +22,8 @@
     <h1>My Name: {{ current_username }}</h1>
     <h1>My Email: {{ current_email }}</h1>
     <hr>
-    <!-- <h1>My Password: <a class="nav-link" href="/forgotpassword">Reset password</a></h1>
-    <hr> -->
+    <h2>My Password: <a class="nav-link" href="/forgotpassword">Reset password</a></h2>
+    <hr>
     
 
 
@@ -44,7 +44,7 @@ export default {
       email: "",
       password: "",
       errors: [],
-      current_username: "some name",
+      current_username: "Insert Name",
       current_email: "somename@email.com",
     };
   },
