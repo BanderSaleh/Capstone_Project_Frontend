@@ -75,9 +75,6 @@
               <th scope="col" style="text-align: left; width: 10rem;">
                 <SortLink name="store_notes">Notes</SortLink>
               </th>
-              <th scope="col" style="text-align: left; width: 10rem;">
-                <SortLink name="user_id">User ID</SortLink>
-              </th>
             </tr>
           </thead>
           <tbody slot="body" slot-scope="sort">
