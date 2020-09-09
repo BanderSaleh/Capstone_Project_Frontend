@@ -75,6 +75,9 @@
               <th scope="col" style="text-align: left; width: 10rem;">
                 <SortLink name="store_notes">Notes</SortLink>
               </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="user_id">User ID</SortLink>
+              </th>
             </tr>
           </thead>
           <tbody slot="body" slot-scope="sort">
@@ -89,7 +92,7 @@
               <td>{{ product.quantity }}</td>
               <td>{{ product.price }}</td>
               <td>{{ product.deadline }}</td>
-              <td>{{ (product.status = "Carted") }}</td>
+              <td>{{ product.status }}</td>
               <img v-bind:src="product.picture" height=" 120px" />
               <td>{{ product.store_notes }}</td>
             </tr>
@@ -180,6 +183,7 @@ export default {
       newProductStoreNotes: "",
       newProductStatus: "",
       newProductPicture: "",
+      newProductUserID: "",
       currentProduct: {},
       completed: {},
       newCompletedStoreName: "",
@@ -225,26 +229,11 @@ export default {
     completedProduct: function (product) {
       console.log("completing product...");
       var params = {
-        store_name: product.store_name,
-        product_name: product.product_name,
-        quantity: product.quantity,
-        price: product.price,
-        deadline: product.deadline,
-        store_notes: product.store_notes,
-        picture: product.picture,
-        status: "Carted",
+        status: "Completed",
       };
-      axios.post("/api/completed/create", params).then((response) => {
+      axios.patch("/api/products/" + product.id, params).then((response) => {
         console.log(response.data);
-        completed.push(response.data);
-      });
-      axios.delete("/api/products/" + product.id).then((response) => {
-        console.log(response.data);
-        // delete in frontend
-        var index = this.products.indexOf(product);
-        this.products.splice(index, 1);
-
-        console.log(index);
+        this.currentProduct = {};
       });
     },
     addProduct: function () {
@@ -259,6 +248,8 @@ export default {
         deadline: this.newProductDeadline,
         store_notes: this.newProductStoreNotes,
         picture: this.newProductPicture,
+        user_id: this.newProductUserID,
+        status: "Carted",
       };
 
       axios.post("/api/products", params).then((response) => {

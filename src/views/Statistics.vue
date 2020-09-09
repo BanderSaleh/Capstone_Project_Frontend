@@ -27,11 +27,7 @@
    
    <h1>Chart Data:</h1>
    
-   <div v-for="completeChart in completedChart">
-     <p>Timestamp: {{ completeChart.timestamp }}</p>
-     <p>Quantity: {{ completeChart.quantity }}</p>
-     <hr>
-   </div>
+
    
 
 
@@ -159,7 +155,6 @@ export default {
   },
   created: function () {
     this.indexCompleted();
-    this.indexChart();
   },
   methods: {
     indexCompleted: function () {
@@ -170,14 +165,7 @@ export default {
         this.completed = response2.data;
       });
     },
-    indexChart: function () {
-      console.log("Graph Data from Completed2...");
 
-      axios.get("/api/completed/show2").then((response) => {
-        console.log(response);
-        this.completedChart = response.data;
-      });
-    },
     showInfo: function (complete) {
       console.log(complete);
       this.currentComplete = complete;
