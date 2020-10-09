@@ -40,7 +40,7 @@
 
       <h2>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h2>
 
-      <h2>-Current App Version: 1.56</h2>
+      <h2>-Current App Version: 1.74</h2>
     </div>
     <hr>
 
