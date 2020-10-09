@@ -32,7 +32,7 @@
 
 
    
-    <h1>Full Completed Tables:</h1>
+    <h1>Completed Products Table:</h1>
 
 
     <div v-for="complete in completed">
@@ -43,7 +43,7 @@
       <p>Deadline: {{ complete.deadline }}</p>
       <p>Store Notes: {{ complete.store_notes }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
-      <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p>
+      <!-- <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p> -->
       <p>Picture: <img v-bind:src="complete.picture" height=" 120px"></p>
       <p>Status: Completed</p>
 
@@ -64,7 +64,7 @@
         <p>Deadline: <input type="text" v-model="currentComplete.deadline" /></p>
         <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
         <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
-        <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p>
+        <!-- <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p> -->
         <p>Picture (URL): <input type="text" v-model="currentComplete.picture" /></p>
 
 

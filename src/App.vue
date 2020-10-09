@@ -75,11 +75,11 @@
             <div class="col-lg-8 col-md-10 mx-auto">
               <ul class="list-inline text-center">
               </ul>
-              <router-link to="/about">[about]</router-link> |
-              <router-link to="contact">[contact]</router-link> |
-              <router-link to="/faq">[faq]</router-link> |
-              <router-link to="/terms">[terms]</router-link> |
-              <router-link to="/privacy">[privacy]</router-link>
+              <router-link to="/about">about</router-link> |
+              <router-link to="contact">contact</router-link> |
+              <router-link to="/faq">faq</router-link> |
+              <router-link to="/terms">terms</router-link> |
+              <router-link to="/privacy">privacy</router-link>
               <p class="copyright text-muted"></p>
                 <p></p>
                 <p>A Bander Saleh production</p>

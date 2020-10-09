@@ -67,13 +67,13 @@
                 <SortLink name="deadline">Deadline</SortLink>
               </th>
               <th scope="col" style="text-align: left; width: 10rem;">
-                <SortLink name="status">Status</SortLink>
+                <SortLink name="store_notes">Notes</SortLink>
               </th>
               <th scope="col" style="text-align: left; width: 10rem;">
                 <SortLink name="picture">Picture</SortLink>
               </th>
               <th scope="col" style="text-align: left; width: 10rem;">
-                <SortLink name="store_notes">Notes</SortLink>
+                <SortLink name="status">Status</SortLink>
               </th>
             </tr>
           </thead>
@@ -89,9 +89,9 @@
               <td>{{ product.quantity }}</td>
               <td>{{ product.price }}</td>
               <td>{{ product.deadline }}</td>
-              <td>{{ product.status }}</td>
-              <img v-bind:src="product.picture" height=" 120px" />
               <td>{{ product.store_notes }}</td>
+              <img v-bind:src="product.picture" height=" 120px" />
+              <td>{{ product.status }}</td>
             </tr>
           </tbody>
         </SortedTable>
@@ -113,10 +113,10 @@
         <p>Price: <input type="text" v-model="currentProduct.price" /></p>
         <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
         <p>Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
-        <p>Status: "Carted"</p>
         <p>
           Picture (URL): <input type="text" v-model="currentProduct.picture" />
         </p>
+        <p>Status: "Carted"</p>
 
         <button v-on:click="completedProduct(currentProduct)">
           Complete Product

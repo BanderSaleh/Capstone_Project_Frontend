@@ -58,15 +58,15 @@
     <hr>
 
     <h2>
-      Youtube: Youtube.com/bandersaleh
+      Youtube: <a href="https://www.youtube.com/user/bandersaleh"> Youtube.com/bandersaleh </a>
     </h2>
 
     
     <h2>
-      Vimeo: Vimeo.com/bandersaleh
+      Vimeo: <a href="https://www.vimeo.com/bandersaleh"> Vimeo.com/bandersaleh </a>
     </h2>
     <h2>
-      Instagram: Instagram.com/bandersaleh93
+      Instagram: <a href="https://www.instagram.com/bandersaleh93/"> Instagram.com/bandersaleh93 </a>
     </h2>
     <h2>
       Email: bandersaleh93@gmail.com

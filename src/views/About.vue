@@ -20,7 +20,7 @@
       </div>
     </header>
     
-    <h1>About Page</h1>
+    <h1>About The App:</h1>
 
     <hr>
 
@@ -40,7 +40,7 @@
 
       <h2>-Personal Notes about non specific store locations can be viewed in the "More Info" button. Other people's "Store Notes" can be viewed in the "More Info" button when the Specific Location option is checked.</h2>
 
-      <h2>-Current App Version: 1.0</h2>
+      <h2>-Current App Version: 1.5</h2>
     </div>
     <hr>
 
@@ -48,7 +48,21 @@
     <h2>Frontend: [HTML/CSS] [JavaScript] [Vuejs]</h2>
 
     <hr>
+
+    <!-- <h1>About The Developer:</h1> -->
+
+    <!-- <hr> -->
     
+    <!-- <h2>About Dev:</h2> -->
+    <!-- <h2>Introduction</h2>
+    <hr>
+    <div id="body">
+      <h2>Hello there! Thanks for taking the time to learn </h2>
+
+    </div>
+    <hr> -->
+
+   
     
     
 
