@@ -141,6 +141,10 @@ import MapChart from "./components/MapChart";
 export default {
   data: function () {
     return {
+      email: "",
+      password: "",
+      errors: [],
+      account: [],
       message: "My Shopping List:",
       products: [],
       image1: require("@/assets/images/shopping_list_1.jpg"),
@@ -158,6 +162,25 @@ export default {
     this.indexProducts();
   },
   methods: {
+    submit: function () {
+      var params = {
+        email: this.email,
+        password: this.password,
+      };
+      axios
+        .post("/api/sessions", params)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    },
     isLoggedIn: function () {
       if (localStorage.getItem("jwt")) {
         return true;
@@ -167,6 +190,14 @@ export default {
     },
     getUserID: function () {
       return localStorage.getItem("user_id");
+    },
+    MeUserInfo: function () {
+      console.log("Signed in User...");
+
+      axios.get("/api/account").then((response) => {
+        console.log(response);
+        this.account = response.data;
+      });
     },
     indexProducts: function () {
       console.log("products index...");

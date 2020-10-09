@@ -51,7 +51,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      email: "",
+      email: response.data.jwt.email,
       password: "",
       errors: [],
     };

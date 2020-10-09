@@ -9,7 +9,7 @@
             <div class="page-heading">
               <h1>My Statistics</h1>
               <span class="subheading">[Smart Graph] [Smart Map]</span>
-              <!-- <span class="subheading">[Smart Table]</span> -->
+              <span class="subheading">[Smart Table]</span>
             </div>
           </div>
         </div>
@@ -26,16 +26,116 @@
    </div>
    
    <h1>Chart Data:</h1>
-   
+   <h4>Timestamp vs Quantity</h4>
 
+   <hr>
    
 
 
    
     <h1>Completed Products Table:</h1>
 
+    <hr>
 
-    <div v-for="complete in completed">
+    <!-- Smart Table Structure -->
+    <div id="app">
+      <div :style="{ backgroundImage: `url('${wallpaper1}' )` }">
+        <SortedTable :values="completed">
+          <thead>
+            <tr>
+              <th scope="col" style="button: left; width: 10rem;">
+                <SortLink name="button">Edit</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="id">ID</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="store_name">Store Name</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="product_name">Product Name</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="quantity">Quantity</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="price">Price</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="deadline">Deadline</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="store_notes">Notes</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="timestamp">Timestamp</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="picture">Picture</SortLink>
+              </th>
+              <th scope="col" style="text-align: left; width: 10rem;">
+                <SortLink name="status">Status</SortLink>
+              </th>
+            </tr>
+          </thead>
+          <tbody slot="body" slot-scope="sort">
+            <tr v-for="product in sort.values" :key="product.id">
+              <td>
+                <button v-on:click="showInfo(product)">EDIT</button>
+              </td>
+
+              <td>{{ product.id }}</td>
+              <td>{{ product.store_name }}</td>
+              <td>{{ product.product_name }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.deadline }}</td>
+              <td>{{ product.store_notes }}</td>
+              <td>{{ product.timestamp }}</td>
+              <img v-bind:src="product.picture" height=" 120px" />
+              <td>{{ product.status }}</td>
+            </tr>
+          </tbody>
+        </SortedTable>
+      </div>
+    </div>    
+
+    <hr>
+
+    <!-- Show Product Editable Section -->
+    <dialog id="product-details">
+      <form method="dialog">
+        <h1>Product info</h1>
+        <p>
+          Store Name: <input type="text" v-model="currentProduct.store_name" />
+        </p>
+        <p>
+          Product Name:
+          <input type="text" v-model="currentProduct.product_name" />
+        </p>
+        <p>Quantity: <input type="text" v-model="currentProduct.quantity" /></p>
+        <p>Price: <input type="text" v-model="currentProduct.price" /></p>
+        <p>Deadline: <input type="text" v-model="currentProduct.deadline" /></p>
+        <p>Notes: <input type="text" v-model="currentProduct.store_notes" /></p>
+        <p>
+        <p>Timestamp: <input type="text" v-model="currentProduct.timestamp" /></p>
+        <p>
+          Picture (URL): <input type="text" v-model="currentProduct.picture" />
+        </p>
+        <p>Status: "Completed"</p>
+
+        <button v-on:click="updateProduct(currentProduct)">Update</button>
+
+        <button v-on:click="destroyProduct(currentProduct)">
+          Delete Product
+        </button>
+
+        <button>Close</button>
+      </form>
+    </dialog>
+
+
+    <!-- <div v-for="complete in completed">
       <p>Store Name: {{ complete.store_name }}</p>
       <p>Product Name: {{ complete.product_name }}</p>
       <p>Quantity: {{ complete.quantity }}</p>
@@ -43,7 +143,6 @@
       <p>Deadline: {{ complete.deadline }}</p>
       <p>Store Notes: {{ complete.store_notes }}</p>
       <p>Timestamp: {{ complete.timestamp }}</p>
-      <!-- <p>Store Notes Timestamp: {{ complete.store_notes_timestamp }}</p> -->
       <p>Picture: <img v-bind:src="complete.picture" height=" 120px"></p>
       <p>Status: Completed</p>
 
@@ -64,7 +163,7 @@
         <p>Deadline: <input type="text" v-model="currentComplete.deadline" /></p>
         <p>Store Notes: <input type="text" v-model="currentComplete.store_notes" /></p>
         <p>Timestamp: <input type="text" v-model="currentComplete.timestamp" /></p>
-        <!-- <p>Store Notes Timestamp: <input type="text" v-model="currentComplete.store_notes_timestamp" /></p> -->
+
         <p>Picture (URL): <input type="text" v-model="currentComplete.picture" /></p>
 
 
@@ -78,7 +177,7 @@
 
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog> -->
   </div>
 </template>
 
@@ -117,6 +216,7 @@ export default {
       complete: [],
       completedChart: [],
       completeChart: [],
+      currentProduct: {},
       newCompletedStoreName: "",
       newCompletedProductName: "",
       newCompletedQuantity: "",
@@ -126,6 +226,7 @@ export default {
       newCompletedTimestamp: "",
       newCompletedStoreNotesTimestamp: "",
       newCompletedStatus: "",
+      wallpaper1: require("@/assets/images/Wallpaper1.jpg"),
       currentComplete: {},
       chartOptions: {
         chart: {
@@ -165,11 +266,30 @@ export default {
         this.completed = response2.data;
       });
     },
+    showInfo: function (product) {
+      console.log(product);
+      this.currentProduct = product;
+      document.querySelector("#product-details").showModal();
+    },
+    updateProduct: function (product) {
+      console.log(product);
 
-    showInfo: function (complete) {
-      console.log(complete);
-      this.currentComplete = complete;
-      document.querySelector("#completed-details").showModal();
+      var params = {
+        store_name: product.store_name,
+        product_name: product.product_name,
+        quantity: product.quantity,
+        price: product.price,
+        deadline: product.deadline,
+        store_notes: product.store_notes,
+        timestamp: product.timestamp,
+        picture: product.picture,
+        // status: "Carted",
+      };
+
+      axios.patch("/api/products/" + product.id, params).then((response) => {
+        console.log(response.data);
+        this.currentProduct = {};
+      });
     },
     updateComplete: function (complete) {
       console.log(complete);

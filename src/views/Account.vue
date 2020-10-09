@@ -20,7 +20,8 @@
 
     <hr>
     <!-- <h1>My Name: {{ current_user.email }}</h1> -->
-    <h1>My Email: {{ current_user }}</h1>
+    <h1>My Name: {{ current_username }}</h1>
+    <h1>My Email: {{ current_email }}</h1>    
     <hr>
     <h2>My Password: <a class="nav-link" href="/forgotpassword">Reset password</a></h2>
     <hr>
@@ -44,11 +45,20 @@ export default {
       email: "",
       password: "",
       errors: [],
-      current_username: "Insert Name",
+      account: [],
+      current_username: "current_user.name",
       current_email: "somename@email.com",
     };
   },
   methods: {
+    MeUserInfo: function () {
+      console.log("Signed in User...");
+
+      axios.get("/api/account").then((response) => {
+        console.log(response);
+        this.account = response.data;
+      });
+    },
     submit: function () {
       var params = {
         email: this.email,
