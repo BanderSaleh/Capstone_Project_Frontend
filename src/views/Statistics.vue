@@ -26,7 +26,7 @@
    </div>
    
    <h1>Chart Data:</h1>
-   <h4>Timestamp vs Quantity</h4>
+   <h4>Product.Timestamp vs Product.Quantity</h4>
 
    <hr>
    
