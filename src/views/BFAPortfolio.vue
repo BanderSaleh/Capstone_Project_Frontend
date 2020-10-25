@@ -53,7 +53,7 @@
 
     <hr>
 
-    <span class="subheading">[ Location: Silicon Valley, California, USA ]</span>
+    <span class="subheading">[ Location: Seattle, Washington, USA ]</span>
 
     <hr>
 
@@ -67,6 +67,9 @@
     </h2>
     <h2>
       Instagram: <a href="https://www.instagram.com/bandersaleh93/"> Instagram.com/bandersaleh93 </a>
+    </h2>
+    <h2>
+      Linkedin: <a href="https://www.linkedin.com/in/hirebandersaleh/"> Linkedin.com/in/hirebandersaleh </a>
     </h2>
     <h2>
       Email: bandersaleh93@gmail.com
